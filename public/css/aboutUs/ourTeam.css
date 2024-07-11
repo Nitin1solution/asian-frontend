@@ -1,0 +1,129 @@
+.short-line {
+    position: relative;
+    text-align: center;
+    font-size: 42px!important;
+    text-transform: uppercase;
+
+    /* width: fit-content; */
+}
+
+.short-line::after {
+    content: "";
+    /* width: 100%; */
+    height: .1em;
+    /* background-color: var(--c-title-underline-color); */
+    background: rgb(9, 9, 9);
+    width: 100px;
+
+    position: absolute;
+    bottom: -15px;
+    left: 47%;
+
+}
+
+.heading-div {
+    margin: 35px 0px;
+}
+
+
+.tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px 0px 0px;
+}
+
+.tablinks {
+    font-size: 20px;
+    width: 25%;
+}
+
+.tablinks:hover {
+    text-decoration: underline;
+    text-underline-offset: 7px;
+    font-weight: 600;
+}
+
+.inner-team {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    margin: 60px 0px;
+}
+.person-info{
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.person-info h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px;
+}
+.person-info  p:first-of-type{
+    height: 55px;
+}
+.person-info p {
+    font-size: 14px;
+    font-weight: 400;
+    /* color: grey; */
+    margin: 0px;
+    line-height: 20px;
+}
+
+.person-img {
+    /* width: 200px; */
+    /* height: 200px; */
+    /* border-radius: 50%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.person-img img {
+    /* width: 200px; */
+    /* height: 200px; */
+    width: 85%;
+    object-fit: fill;
+    object-position: center;
+}
+
+
+@media (max-width:850px){
+
+
+   .inner-team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 60px 0px;
+   }
+}
+
+
+
+
+@media (max-width:450px){
+    .inner-team {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 30px;
+        margin: 60px 0px;
+       }
+       .tab{
+        flex-direction: column;
+       }
+       .short-line::after{
+        left: 36%;
+       }
+
+       .person-info{
+        padding: 10px 40px;
+    }
+
+}

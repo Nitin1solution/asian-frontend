@@ -1,0 +1,89 @@
+.short-line{
+    position: relative;
+    text-align: center;
+    font-size: 42px!important;
+text-transform: uppercase;
+     
+ /* width: fit-content; */
+}
+.short-line::after {
+    content: "";
+    /* width: 100%; */
+    height: .1em; 
+    /* background-color: var(--c-title-underline-color); */
+    background: rgb(9, 9, 9);
+    width: 100px;
+
+    position: absolute;
+    bottom: -15px;
+    left:47%;
+    
+  }
+
+  .heading-div{
+    margin: 35px 0px;
+  }
+
+  .mission-card{
+    margin: 50px 0px;
+    box-shadow: var(--dl-box-shadow);
+    padding: 20px;
+    display: flex;
+
+  }
+.mission-card .left , .mission-card .right{
+    width: 50%;
+    padding: 10px;
+}
+
+.mission-heading{
+    font-size: 50px!important;
+    line-height: 66px;
+    font-weight: 400;
+}
+
+.mission-card .left h5{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.mission-card .left h5::after {
+        display: inline-block;
+        content: "";
+        border-top: .3rem solid black;
+        width: 4rem;
+        margin: 0px 0px -6px 0px;
+        transform: translateY(-1rem);
+    }
+    
+   
+
+
+
+
+
+@media (max-width:900px){
+    .mission-card{
+        flex-direction: column;
+    }
+    .mission-card .left , .mission-card .right{
+        width: 100%;
+        padding: 10px;
+    }
+    .short-line::after {
+       
+        left: 42%;
+    }
+  
+}    
+
+@media (max-width:450px){
+    .mission-heading{
+        font-size: 32px!important;
+        line-height: 45px;
+        font-weight: 400;
+    }
+}
