@@ -27,7 +27,7 @@ export default async function MemberDispatch() {
     }
 
     const { post_1, post_2, post_3, post_4, post_5 } = data.memberPosts;
-    console.log(post_1.color);
+    // console.log(post_1.color);
 
 
     return (

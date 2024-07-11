@@ -130,7 +130,7 @@
     height: 506px;
     border-right: 1px solid white;
     background-color: transparent;
-    z-index: 1;
+    /* z-index: 1; */
     /* Ensure boxes are above the overlay */
     transition: all 1s ease-in-out;
 }
@@ -156,7 +156,7 @@
 .inner-box {
     margin-top: 70%;
     color: white;
-    padding-inline: 20px;
+    /* padding-inline: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -320,6 +320,21 @@
     border: none;
 }
 
+.hoversec {
+    background-size: cover;
+}
+
+
+.hoversec:hover {
+    background-image: none;
+}
+
+.hoversec1:hover,
+.hoversec2:hover,
+.hoversec3:hover,
+.hoversec4:hover {
+    background-image: none ;
+}
 
 
 
