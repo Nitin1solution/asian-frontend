@@ -46,3 +46,15 @@
 .button-dark:hover{
 color: white !important;
 }
+
+
+@media (max-width:450px){
+    .short-line {
+
+        font-size: 32px !important;
+    
+      }
+      .short-line::after {
+        left: 30%;
+    }
+}

@@ -43,6 +43,11 @@
     text-underline-offset: 7px;
     font-weight: 600;
 }
+.active{
+    text-decoration: underline;
+    text-underline-offset: 7px;
+    font-weight: 600;
+}
 
 .inner-team {
     display: grid;
@@ -94,9 +99,11 @@
 }
 
 
-@media (max-width:850px){
+@media (max-width:1080px){
 
-
+    .tablinks {
+      color: black !important;
+    }
    .inner-team {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -117,6 +124,7 @@
        }
        .tab{
         flex-direction: column;
+        
        }
        .short-line::after{
         left: 36%;
@@ -124,6 +132,18 @@
 
        .person-info{
         padding: 10px 40px;
+    }
+    .tablinks {
+        font-size: 20px;
+        width: 100%;
+        margin: 10px 0px;
+    }
+    .short-line {
+    
+       
+        font-size: 32px!important;
+     
+    
     }
 
 }

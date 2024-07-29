@@ -1,14 +1,15 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import  "/public/css/bootstrap.min.css";
+import  "/public/css/venobox.min.css";
+import  "/public/css/swiper.min.css";
 
-import "./css/bootstrap.min.css";
-import "./css/venobox.min.css";
-import "./css/swiper.min.css";
-import "./css/most-popular.css";
-import "./css/banner.css";
-import "./css/main.css";
-import "./css/bannernew.css";
+import  "/public/css/banner.css";
+import  "/public/css/main.css";
+import  "/public/css/bannernew.css";
+import  "/public/css/responsive1920.css";
+import  "/public/css/tablet.css";
 
 
 

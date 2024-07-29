@@ -34,8 +34,7 @@ export default function Header() {
                                                             className="open-sans">Climate
                                                             change</Link></li>
                                                         <li className="bg-hover-black"><Link href="category/10"
-                                                            className="open-sans">Human
-                                                            rights</Link></li>
+                                                            className="open-sans">People Right's</Link></li>
                                                         <li className="bg-hover-black"><Link href="category/5"
                                                             className="open-sans">Science &
                                                             Technology</Link></li>

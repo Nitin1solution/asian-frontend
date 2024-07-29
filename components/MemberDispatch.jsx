@@ -4,7 +4,7 @@ import MainCard from "./MainCard";
 
 export async function getData() {
     try {
-        const res = await fetch('https://factfirst.in/backend/asian/api/member', {
+        const res = await fetch('https://asiandispatch.net/api/member', {
             cache: 'no-store'
         });
 
@@ -42,13 +42,13 @@ export default async function MemberDispatch() {
 
 
                         {/* member 2 */}
-                        <MainCard post={post_2.post} users={post_2.users} colors={post_2.color} date={post_2.date} />
+                        <MainCard post={post_2.post} users={post_2.users}  date={post_2.date} />
                         {/* member 4  */}
-                        <MainCard post={post_4.post} users={post_4.users} colors={post_4.color} date={post_4.date} />
+                        <MainCard post={post_4.post} users={post_4.users}  date={post_4.date} />
 
                         {/* member 1  */}
-                        {/* <MainCard post={post_1.post} users={post_1.users} colors={post_1.color} date={post_1.date} /> */}
-                        <article className={`post-layout-item img-hover-move ${post_1.color[1]}`}>
+                      
+                        <article className={`post-layout-item img-hover-move  color-category`} style={{ '--category-color': post_1.post.category.color }}>
                             <Link href={`/post/${post_1.post.id}/${post_1.post.post_id}/${post_1.post.post_slug}`}  className="post-thumb media">
                                     <Image
                                         src={post_1.post.post_fr_img}
@@ -63,11 +63,11 @@ export default async function MemberDispatch() {
                             </Link>
                             <div className="post-content">
                                 <h3>
-                                    <Link href={`/post/${post_1.post.id}/${post_1.post.post_id}/${post_1.post.post_slug}`}  className={`${post_1.color[3]} prata`}>{post_1.post.post_title}
+                                    <Link href={`/post/${post_1.post.id}/${post_1.post.post_id}/${post_1.post.post_slug}`}  className={`text-hover-category prata`}>{post_1.post.post_title}
                                     </Link>
                                     <ul className="post-meta">
                                         <li>
-                                            <Link href={`/category/${post_1.post.category.id}`} className={post_1.color[2]}>{post_1.post.category.category}
+                                            <Link href={`/category/${post_1.post.category.id}`} className="tag-category">{post_1.post.category.category}
                                             </Link>
                                         </li>
                                     </ul>
@@ -75,12 +75,12 @@ export default async function MemberDispatch() {
                                 <p className="mt-20">
                                     {post_1.post.post_subtitle.split(' ').slice(0, 40).join(' ')}
                                 </p>
-                                <ul className="author-info mt-20">
+                                <ul className="author-info-name ">
                                     <li>
-                                        <div className={post_1.color[0]} style={{ display: 'flex' }}>
+                                        <div className="text-category" style={{ display: 'flex' }}>
                                             {post_1.users.map((user, index) => (
                                                 <Link key={user.id} href={`/author/${user.id}`}
-                                                        className={post_1.color[0]}
+                                                        className="text-category"
                                                         style={{ margin: '0px 5px 0px 0px' }}
                                                     >
                                                         {user.name}
@@ -98,9 +98,9 @@ export default async function MemberDispatch() {
                         </article>
 
                         {/* member 3  */}
-                        <MainCard post={post_3.post} users={post_3.users} colors={post_3.color} date={post_3.date} />
+                        <MainCard post={post_3.post} users={post_3.users}  date={post_3.date} />
                         {/* member 5 */}
-                        <MainCard post={post_5.post} users={post_5.users} colors={post_5.color} date={post_5.date} />
+                        <MainCard post={post_5.post} users={post_5.users}  date={post_5.date} />
 
                     </div >
                 </div >

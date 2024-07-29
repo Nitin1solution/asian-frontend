@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export async function getData() {
   try {
-    const res = await fetch("https://factfirst.in/backend/asian/api/featured",{
-      cache:'no-store'
+    const res = await fetch("https://asiandispatch.net/api/featured", {
+      cache: 'no-store'
     });
 
     if (!res.ok) {
@@ -34,7 +34,6 @@ export default async function Featured() {
   const { post_1, post_2, post_3, post_4 } = featuredPosts;
 
   return (
-  
     <section
       className="banner-new"
       style={{
@@ -43,7 +42,7 @@ export default async function Featured() {
     >
       <div className="container">
         <Link
-          href={`/post/${post_1.post.id}/${post_1.post.post_id}/${post_1.post.post_slug}`}
+          href={`/story/${post_1.post.post_slug}`}
           style={{ textDecoration: "none" }}
         >
           <div className="maindiv">
@@ -66,10 +65,14 @@ export default async function Featured() {
         <div className="divider-new"></div>
         <div className="bannergrid">
           {[post_2, post_3, post_4].map((postObj, index) => (
-            <div className="grid-item" key={index}>
-              <div>
+            <div
+              className="grid-item"
+              key={index}
+             
+            >
+              <div  style={{ '--category-color': postObj.post.category.color }}>
                 <Link
-                  href={`/post/${postObj.post.id}/${postObj.post.post_id}/${postObj.post.post_slug}`}
+                  href={`/story/${postObj.post.post_slug}`}
                   style={{ textDecoration: "none" }}
                 >
                   <h6>
@@ -77,16 +80,16 @@ export default async function Featured() {
                   </h6>
                 </Link>
                 <Link
-                  href={`/category/${postObj.post.category.id}`}
+                  href={`/category/${postObj.post.category.slug}`}
                   style={{ textDecoration: "none" }}
                 >
-                  <p className={postObj.color[4]}>
+                  <p className="dark-tag-category">
                     {postObj.post.category.category}
                   </p>
                 </Link>
               </div>
               <Link
-                href={`/post/${postObj.post.id}/${postObj.post.post_id}/${postObj.post.post_slug}`}
+                href={`/story/${postObj.post.post_slug}`}
                 style={{ textDecoration: "none" }}
               >
                 <div className="banner-small-image">
@@ -104,6 +107,5 @@ export default async function Featured() {
         </div>
       </div>
     </section>
-   
   );
 }

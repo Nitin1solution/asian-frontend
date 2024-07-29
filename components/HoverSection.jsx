@@ -7,7 +7,7 @@ const HoverSection = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://factfirst.in/backend/asian/api/ads');
+      const response = await fetch('https://asiandispatch.net/api/ads');
       const data = await response.json();
       setAds(Object.values(data.adPosts));
     };

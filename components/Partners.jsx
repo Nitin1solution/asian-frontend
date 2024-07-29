@@ -32,7 +32,7 @@ export default async function Partners() {
                     {data.map((partner, index) => (
                         <figure key={index}>
                             <Link href={partner.link} target="_blank" rel="noopener noreferrer">
-                                <Image src={partner.image} alt={`Partner ${index}`} width={500} height={500} unoptimized />
+                                <Image src={partner.image} alt={`Partner ${index}`} width={108} height={60} unoptimized />
                             </Link>
                         </figure>
                     ))}

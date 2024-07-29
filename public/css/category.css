@@ -21,7 +21,9 @@ font-family: var(--dl-heading-font)!important;
 }
 
 
-
+.white p{
+    color: white!important;
+}
 
 /* Desktop */
 .post-card-footer {
@@ -61,8 +63,22 @@ font-family: var(--dl-heading-font)!important;
     .category-card {
         height: auto !important;
     }
+    .page-header .page-content h2 {
+        font-size: 30px;
+        
+        line-height: 1.2;
+    }
 }
 
+
+@media (max-width:1080px){
+    .category-title {
+        font-size: 24px !important;
+        line-height: 40px !important;
+      
+    }
+
+}
 
 
 

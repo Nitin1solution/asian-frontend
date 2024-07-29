@@ -86,4 +86,12 @@ text-transform: uppercase;
         line-height: 45px;
         font-weight: 400;
     }
+    .short-line {
+
+        font-size: 32px !important;
+    
+      }
+      .short-line::after {
+        left: 35%;
+    }
 }
