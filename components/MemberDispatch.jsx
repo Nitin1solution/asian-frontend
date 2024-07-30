@@ -63,11 +63,11 @@ export default async function MemberDispatch() {
                             </Link>
                             <div className="post-content">
                                 <h3>
-                                    <Link href={`/post/${post_1.post.id}/${post_1.post.post_id}/${post_1.post.post_slug}`}  className={`text-hover-category prata`}>{post_1.post.post_title}
+                                    <Link href={`/${post_1.post.post_slug}`}  className={`text-hover-category prata`}>{post_1.post.post_title}
                                     </Link>
                                     <ul className="post-meta">
                                         <li>
-                                            <Link href={`/category/${post_1.post.category.id}`} className="tag-category">{post_1.post.category.category}
+                                            <Link href={`/category/${post_1.post.category.slug}`} className="tag-category">{post_1.post.category.category}
                                             </Link>
                                         </li>
                                     </ul>

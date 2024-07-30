@@ -1,8 +1,9 @@
+// 'use client';
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const HoverSection = ({ post, users, colors, category, boxid, id }) => {
+const HoverSection = ({ post, users, category, boxid, id }) => {
   const sec_img = post.post_fr_img;
   const sec_title = post.post_title;
   const sec_cate = post.category.category;
@@ -15,8 +16,8 @@ const HoverSection = ({ post, users, colors, category, boxid, id }) => {
     </span>
   ));
   const sec_date = post.date;
-  const sec_url = `/post/${post.id}/${post.post_id}/${post.post_slug}`;
-  const sec_cat_id = post.category.id;
+  const sec_url = `/${post.post_slug}`;
+  const sec_cat_id = post.category.slug;
 
   return (
     <div className={`hoversec ${boxid}`} id={id} style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url(${sec_img})` }}>
@@ -25,7 +26,7 @@ const HoverSection = ({ post, users, colors, category, boxid, id }) => {
           <h3>{sec_title}</h3>
           <div>
             <Link href={`/category/${sec_cat_id}`} style={{ textDecoration: 'none' }}>
-              <button className={colors[4]}>{sec_cate}</button>
+              <button className="dark-tag-category">{sec_cate}</button>
             </Link>
           </div>
           <div>
@@ -51,7 +52,7 @@ const ThirdSection = ({ ads }) => {
       overlay.style.backgroundImage = `url(${ads[index].post.post_fr_img})`;
       overlay.style.opacity = 1;
 
-      ads.slice(0, -1).forEach((ad, i) => {
+      ads.forEach((ad, i) => {
         if (i !== index) {
           document.getElementById(`box${i + 1}`).style.backgroundImage = 'none';
         }
@@ -61,13 +62,13 @@ const ThirdSection = ({ ads }) => {
     const handleMouseLeave = () => {
       overlay.style.opacity = 0;
 
-      ads.slice(0, -1).forEach((ad, i) => {
+      ads.forEach((ad, i) => {
         document.getElementById(`box${i + 1}`).style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url(${ad.post.post_fr_img})`;
       });
     };
 
 
-    ads.slice(0, -1).forEach((ad, index) => {
+    ads.forEach((ad, index) => {
       const box = document.getElementById(`box${index + 1}`);
       if (box) {
         box.addEventListener('mouseenter', () => handleMouseEnter(index));
@@ -87,7 +88,7 @@ const ThirdSection = ({ ads }) => {
           key={ad.post.id}
           post={ad.post}
           users={ad.users}
-          colors={ad.color}
+         
           category={ad.post.category}
           boxid={`box${index + 1} box-${index + 1} hoversec${index + 1}`}
           id={`box${index + 1}`}

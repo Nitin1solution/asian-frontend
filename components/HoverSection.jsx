@@ -9,6 +9,7 @@ const HoverSection = () => {
     const fetchData = async () => {
       const response = await fetch('https://asiandispatch.net/api/ads');
       const data = await response.json();
+      // console.log(data);
       setAds(Object.values(data.adPosts));
     };
 
