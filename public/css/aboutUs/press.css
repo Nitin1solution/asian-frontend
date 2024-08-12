@@ -52,26 +52,36 @@
   }
   .articles{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(1,1fr);
     gap: 30px;
     margin-bottom: 100px;
 
   }
   .article{
+    display: flex;
+    /* flex-wrap: wrap; */
     box-shadow: var(--dl-box-shadow);
     /* padding: 10px 10px 20px 10px; */
     padding: 25px;
 
   }
+  .article img {
+    border: none;
+    outline: none;
+    width: 350px!important;
+    height: auto;
+    max-width: max-content!important;
+}
 
   .article h2{
     font-size: 25px;
     line-height: 32px;
-    padding-top: 20px;
+   margin-bottom: 5px;
 
   }
 
   .article .quoteicon{
+    display: none;
    height: 30px;
    width: 30px;
    margin: 20px 0px;
@@ -83,6 +93,7 @@
    font-size: 14px;
    padding: 7px 11px;
    font-family: "Open Sans", sans-serif;
+  
 
   }
 
@@ -94,9 +105,9 @@
 
 
 
-.press-thumbnail{
-  width: 100% !important;
-  height: 200px !important;
+.press-thumbnail {
+  width: 350px;
+  /* height: 200px; */
   /* max-height: 300px !important; */
 }
 .pressec>h2>p{
@@ -172,7 +183,7 @@
   height: 180px;
 } */
 .press-title-body{
-  height: 280px;
+padding-inline:30px;
 }
 .press-social-share a:hover{
 background-color: black !important;
@@ -185,17 +196,39 @@ color: white;
 }
 
 .article h2 {
-    font-size: 20px;
-    line-height: 30px;
+  font-size: 18px;
+  line-height: 21px;
+  padding-top: 0px;
 }
 .articles {
   grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   
 }
+.article {
+ flex-direction: column;
+}
+.article img {
 
+  width: 100%!important;
+  
+}
+.press-title-body {
+  padding: 10px 0px;
+  padding-inline: 0px;
+}
 .press .right p{
   padding-left: 0%;
+}
+p {
+
+  font-size: 15px;
+  line-height: 20px;
+  margin-bottom: 15px;
+}
+.short-line::after {
+
+  left: 43%;
 }
 
   }
@@ -222,10 +255,23 @@ margin-top: 20px;
 
 }
 .short-line::after {
-  left: 32%;
+  left: 36%;
 }
 .sub-heading-press {
   padding: 0px 0px;
 
 }
   }
+
+
+  @media (min-width: 1081px) and (max-width: 1199px) {
+    .article h2 {
+        font-size: 20px;
+        line-height: 24px;
+        padding-top: 0px;
+    }
+    .short-line::after {
+      
+      left: 45%;
+  }
+}

@@ -1,99 +1,167 @@
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+
+async function getTopics() {
+    try {
+        const res = await fetch('https://asiandispatch.net/api/menu', {
+            cache: 'no-store',
+        });
+
+        if (!res.ok) {
+            throw new Error('Failed to fetch data');
+        }
+
+        const data = await res.json();
+        return data.category || []; // Extract the category array or return an empty array if not found
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
 
 export default function Header() {
+    const [topics, setTopics] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchBoxActive, setSearchBoxActive] = useState(false);
+const searchBtn = useRef(false);
+    useEffect(() => {
+        async function fetchTopics() {
+            const topics = await getTopics();
+            setTopics(topics);
+        }
+        fetchTopics();
+    }, []);
+
+    useEffect(() => {
+       
+      searchBtn.current=!searchBtn.current;
+      
+    }, [searchBoxActive]);
+
+    const handleSearch = async (e) => {
+        e.preventDefault(); 
+        // Add your search functionality here
+    };
+
+    const handleSearchMenuClick = () => {
+        console.log('Search menu button clicked');
+        setSearchBoxActive(prevState => !prevState);
+        // setSearchBoxActive(!searchBoxActive);
+    };
+    // const handleSearchMenuClick = () => {
+    //     console.log('Before toggle:', searchBoxActive);
+    //     setSearchBoxActive(prevState => !prevState);
+    //     console.log('After toggle:', !searchBoxActive); // Expected new state
+    // };
     return (
         <>
             <header className="main-header">
-
                 <div className="bottom-header-1">
                     <div className="container">
                         <div className="main-header-wapper">
                             <div className="site-logo">
-                                <Link href="/" >
-                                    {/* <Image src="/images/White logo.gif" alt="" width={250} height={30} /> */}
-                                        <Image src="/images/White logo.gif" alt="White logo" width={250} height={30} unoptimized />
+                                <Link href="/">
+                                    <Image src="/images/White logo.gif" alt="White logo" width={250} height={30} unoptimized />
                                 </Link>
-
                             </div>
                             <div className="main-header-info">
-                                <div className="header-menu-wrap ">
+                                <div className="header-menu-wrap">
                                     <ul className="nav-menu">
                                         <li>
-                                            <Link href="" data-text="Newsroom" className="open-sans">Newsroom</Link>
+                                            <Link href="#" data-text="Newsroom" className="open-sans">Newsroom</Link>
                                             <ul>
-                                                <li className="bg-hover-black"><Link href="ads-reporting"
-                                                    className="open-sans">AD Reporting</Link></li>
-                                                <li className="bg-hover-black"><Link href="members-dispatch"
-                                                    className="open-sans">Member Dispatch</Link>
+                                                <li className="bg-hover-black">
+                                                    <Link href="/original-reporting" className="open-sans">Original Reporting</Link>
                                                 </li>
-                                                <li className="bg-hover-black"><Link href="#" className="open-sans">Topics <span
-                                                    style={{ paddingLeft: '57px' }}> &#8594;</span></Link>
+                                                <li className="bg-hover-black">
+                                                    <Link href="/members-dispatch" className="open-sans">Members' Dispatch</Link>
+                                                </li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="#" className="open-sans">
+                                                        Topics <span style={{ paddingLeft: '57px' }}> &#8594;</span>
+                                                    </Link>
                                                     <ul>
-                                                        <li className="bg-hover-black"><Link href="category/13"
-                                                            className="open-sans">Climate
-                                                            change</Link></li>
-                                                        <li className="bg-hover-black"><Link href="category/10"
-                                                            className="open-sans">People Right's</Link></li>
-                                                        <li className="bg-hover-black"><Link href="category/5"
-                                                            className="open-sans">Science &
-                                                            Technology</Link></li>
-                                                        <li className="bg-hover-black"><Link href="category/11"
-                                                            className="open-sans">Health</Link></li>
-                                                        <li className="bg-hover-black"><Link href="category/9"
-                                                            className="open-sans">Politics &
-                                                            Governance</Link></li>
+                                                        {topics.map((topic) => (
+                                                            <li className="bg-hover-black" key={topic.slug}>
+                                                                <Link href={`/category/${topic.slug}`} className="open-sans">
+                                                                    {topic.category}
+                                                                </Link>
+                                                            </li>
+                                                        ))}
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </li>
-
                                         <li>
-                                            <Link href="" data-text="
-                            About Us"
-                                                className="open-sans">About Us</Link>
+                                            <Link href="#" data-text="About Us" className="open-sans">About Us</Link>
                                             <ul>
-                                                <li className="bg-hover-black"><Link href="who-we-are"
-                                                    className="open-sans">Who we are
-                                                </Link></li>
-                                                <li className="bg-hover-black"><Link href="our-team"
-                                                    className="open-sans">Our team</Link></li>
-                                                <li className="bg-hover-black"><Link href="contact-us"
-                                                    className="open-sans">contact us</Link></li>
-                                                <li className="bg-hover-black"><Link href="work-with-us"
-                                                    className="open-sans">Work with us </Link></li>
-                                                <li className="bg-hover-black"><Link href="press"
-                                                    className="open-sans">Press</Link></li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="who-we-are" className="open-sans">Who we are</Link>
+                                                </li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="our-team" className="open-sans">Our team</Link>
+                                                </li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="contact-us" className="open-sans">Contact us</Link>
+                                                </li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="work-with-us" className="open-sans">Work with us</Link>
+                                                </li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="press" className="open-sans">Press</Link>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <Link href="#" data-text="Network" className="open-sans">Network</Link>
                                             <ul>
-                                                <li className="bg-hover-black"><Link href="members"
-                                                    className="open-sans">Members</Link></li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="members" className="open-sans">Members</Link>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
-
-
-
                                 </div>
-
+                                {/* Search functionality */}
                                 <div className="menu-right-item">
+                                    <button className="menu-search" id="search-menu" onClick={handleSearchMenuClick}>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14.811 14.811">
+                                            <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" transform="translate(-2.25 -2.25)">
+                                                <circle cx="5.5" cy="5.5" r="5.5" data-name="Ellipse 7" transform="translate(3 3)"></circle>
+                                                <path d="m16 16-3.142-3.142"></path>
+                                            </g>
+                                        </svg>
+                                    </button>
 
                                     <button className="mobile-menu-action">
                                         <span></span>
                                         <span></span>
                                         <span></span>
                                     </button>
-
                                 </div>
                             </div>
                         </div>
+                  
+                        <div key={searchBoxActive} className={`main-header-search ${searchBoxActive ? 'active' : ''}`}>
+                                <form onSubmit={handleSearch} className="search-form">
+                                    <input
+                                        type="text"
+                                        placeholder="Search..."
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        required
+                                    />
+                                    <button type="submit">
+                                        <i className="fa fa-search"></i>
+                                    </button>
+                                </form>
+                            </div>
+                     
                     </div>
-                </div >
-
-            </header >
+                </div>
+            </header>
         </>
     );
 }

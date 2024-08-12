@@ -20,9 +20,11 @@ export async function getData() {
 
 export default async function Featured() {
   const data = await getData();
+  // console.log(data);
 
   if (!data) {
     return <div>Loading...</div>;
+
   }
 
   const { categories, featuredPosts } = data;
@@ -42,7 +44,7 @@ export default async function Featured() {
     >
       <div className="container">
         <Link
-          href={`/story/${post_1.post.post_slug}`}
+          href={`/${post_1.post.post_slug}`}
           style={{ textDecoration: "none" }}
         >
           <div className="maindiv">
@@ -72,7 +74,7 @@ export default async function Featured() {
             >
               <div  style={{ '--category-color': postObj.post.category.color }}>
                 <Link
-                  href={`/story/${postObj.post.post_slug}`}
+                  href={`/${postObj.post.post_slug}`}
                   style={{ textDecoration: "none" }}
                 >
                   <h6>
@@ -89,7 +91,7 @@ export default async function Featured() {
                 </Link>
               </div>
               <Link
-                href={`/story/${postObj.post.post_slug}`}
+                href={`/${postObj.post.post_slug}`}
                 style={{ textDecoration: "none" }}
               >
                 <div className="banner-small-image">

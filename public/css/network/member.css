@@ -236,6 +236,7 @@ figure {
     padding: 20px 20px;
 }
 @media (max-width:1400px){
+    
     .short-line {
       
         font-size: 31px !important;
@@ -297,5 +298,15 @@ figure {
       }
       .short-line::after {
         left: 30%;
+    }
+}
+
+@media (min-width:1081px) and (max-width:1199px){
+    .animated-text {
+        font-size: 36px;
+    }
+    .short-line {
+        font-size: 28px !important;
+        line-height: 65px !important;
     }
 }

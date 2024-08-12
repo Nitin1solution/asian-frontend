@@ -5,3 +5,13 @@
 .search-card {
     padding: 50px 0px 100px 0px;
 }
+
+.h405-d{
+    height: 405px;
+    max-height: max-content;
+
+}
+.post-layout-item .post-meta li a {
+    margin-top: 10px;
+ 
+}

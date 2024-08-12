@@ -78,6 +78,11 @@ color: black;
     /* padding:0px 10px 10px 0px ; */
     line-height: 18px;
 }
+
+.single-post-content h6 a{
+ 
+  font-family: "Quicksand", sans-serif!important;
+}
 .entry-header {
   margin-bottom: 0px;
 }
@@ -200,6 +205,7 @@ color:white;
 
 
 
+
 .has-caption {
   margin-bottom: 100px; /* Margin for parent divs with captions */
 }
@@ -233,7 +239,12 @@ color:white;
   font-weight: 500 !important;
 }
 
-
+.tags{
+  margin:50px 0px;
+}
+.tags a{
+  margin: 5px 5px;
+}
 
 /* p>*:only-child {
 
@@ -553,7 +564,7 @@ iframe {
 
 .language ul {
   display: none;
-
+  z-index: 1;
   position: absolute;
   background: white;
   padding: 10px;
