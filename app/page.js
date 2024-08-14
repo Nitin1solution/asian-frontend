@@ -7,11 +7,15 @@ import MemberDispatch from "@/components/MemberDispatch";
 import HoverSection from "@/components/HoverSection";
 import Image from "next/image";
 import Partners from "@/components/Partners";
+import { Suspense } from 'react';
+import Loading from "./loading";
 
  function Home() {
   return (
     <>
+  <Suspense fallback={<Loading/>}>
    <Featured/>
+   </Suspense>
    <MemberDispatch/>
    <HoverSection/>
    <section className="about-section pt100">
@@ -24,7 +28,7 @@ import Partners from "@/components/Partners";
                     <div className="section-heading mb-30 mt-30 ">
                         
                         <h2>
-                            <a href="{{ url('whoWeAre') }}" className="ml-20"> ABOUT US</a>
+                            <a href="/who-we-are" className="ml-20"> ABOUT US</a>
 
                         </h2>
                     </div>

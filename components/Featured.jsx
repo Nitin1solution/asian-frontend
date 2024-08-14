@@ -1,6 +1,7 @@
+import Loading from "@/app/loading";
 import Image from "next/image";
 import Link from "next/link";
-
+import { Suspense } from 'react';
 export async function getData() {
   try {
     const res = await fetch("https://asiandispatch.net/api/featured", {
@@ -23,8 +24,7 @@ export default async function Featured() {
   // console.log(data);
 
   if (!data) {
-    return <div>Loading...</div>;
-
+    return <Loading/>;
   }
 
   const { categories, featuredPosts } = data;
@@ -36,6 +36,7 @@ export default async function Featured() {
   const { post_1, post_2, post_3, post_4 } = featuredPosts;
 
   return (
+    <Suspense fallback={<Loading/>}>
     <section
       className="banner-new"
       style={{
@@ -98,8 +99,8 @@ export default async function Featured() {
                   <Image
                     src={postObj.post.post_fr_img}
                     alt={postObj.post.post_title}
-                    width={500}
-                    height={300}
+                    width={100}
+                    height={75}
                     unoptimized
                   />
                 </div>
@@ -109,5 +110,6 @@ export default async function Featured() {
         </div>
       </div>
     </section>
+    </Suspense>
   );
 }

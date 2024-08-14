@@ -1,6 +1,25 @@
 import Link from "next/link";
+async function getTopics() {
+    try {
+        const res = await fetch('https://asiandispatch.net/api/menu', {
+            cache: 'no-store',
+        });
 
-export default function Footer() {
+        if (!res.ok) {
+            throw new Error('Failed to fetch data');
+        }
+
+        const data = await res.json();
+        return data.category || []; // Extract the category array or return an empty array if not found
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+export default async function Footer() {
+    const topics = await getTopics();
+
+
     return (
         <>
 
@@ -41,43 +60,50 @@ export default function Footer() {
                     </div>
                     <div className="normal-divider"></div>
                     <div className="nav-links col-12  ">
-                        <Link href="category/13" className="open-sans">Climate Change</Link>
+                        {topics.map((topic) => (
+                           
+                                <Link key={topic.slug} href={`/category/${topic.slug}`} className="open-sans" style={{ '--category-color':topic.color }}>
+                                    {topic.category}
+                                </Link>
+
+                        ))}
+                        {/* <Link href="category/13" className="open-sans">Climate Change</Link>
                         <Link href="category/10" className="open-sans">Human Rights</Link>
                         <Link href="category/5" className="open-sans">Science & Tech</Link>
                         <Link href="category/11" className="open-sans">Health</Link>
-                        <Link href="category/9" className="open-sans">Politics & Governance</Link>
+                        <Link href="category/9" className="open-sans">Politics & Governance</Link> */}
                     </div>
                     <div className="normal-divider"></div>
                     <div className="nav-links-1 col-12 ">
                         <Link href="who-we-are" className=" border-right open-sans">About</Link>
-                       
-                    
-                    <Link href="press" className=" border-right open-sans">Press</Link>
-            
-                    <Link href="members" className=" border-right open-sans">Members</Link>
-                  
-                <Link href="contact-us" className="open-sans">Contact Us</Link>
+
+
+                        <Link href="press" className=" border-right open-sans">Press</Link>
+
+                        <Link href="members" className=" border-right open-sans">Members</Link>
+
+                        <Link href="contact-us" className="open-sans">Contact Us</Link>
+                    </div>
+                    <div className="normal-divider open-sans"></div>
+                    <div className="footer-last open-sans">
+                        <p>2024 Data Leads. All Rights Reserved</p>
+                    </div>
+
+
+                </div >
+            </footer >
+
+
+            <div id="scrollup">
+                <button id="scroll-top" className="scroll-to-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
+                        fill="currentColor">
+                        <path
+                            d="M450.001-180.001v-485.077L222.154-437.232 180.001-480 480-779.999 779.999-480l-42.153 42.768-227.847-227.846v485.077h-59.998Z">
+                        </path>
+                    </svg>
+                </button>
             </div>
-            <div className="normal-divider open-sans"></div>
-            <div className="footer-last open-sans">
-                <p>2024 Data Leads. All Rights Reserved</p>
-            </div>
-
-
-        </div >
-    </footer >
-
-
-        <div id="scrollup">
-            <button id="scroll-top" className="scroll-to-top">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"
-                    fill="currentColor">
-                    <path
-                        d="M450.001-180.001v-485.077L222.154-437.232 180.001-480 480-779.999 779.999-480l-42.153 42.768-227.847-227.846v485.077h-59.998Z">
-                    </path>
-                </svg>
-            </button>
-        </div>
-       </>
+        </>
     );
 }

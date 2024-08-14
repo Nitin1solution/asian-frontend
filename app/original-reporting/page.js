@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import '../../public/css/category.css'
 import Styles from './original.module.css'
+import dynamic from 'next/dynamic';
 
 async function getData() {
     try {
@@ -20,8 +21,15 @@ async function getData() {
         return { posts: [] }; // Return an empty posts array on error
     }
 }
+export  function generateMetadata() {
 
-export default async function Page() {
+
+    return {
+        title: 'Original Reporting', // Dynamic title based on category name
+        
+    };
+}
+ async function Page() {
     const data = await getData();
     const posts = data.posts || []; // Ensure posts is always an array
     // console.log(posts);
@@ -127,3 +135,4 @@ export default async function Page() {
         </>
     );
 }
+export default dynamic (() => Promise.resolve(Page), {ssr: false})

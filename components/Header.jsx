@@ -46,7 +46,7 @@ const searchBtn = useRef(false);
     };
 
     const handleSearchMenuClick = () => {
-        console.log('Search menu button clicked');
+        // console.log('Search menu button clicked');
         setSearchBoxActive(prevState => !prevState);
         // setSearchBoxActive(!searchBoxActive);
     };
@@ -63,7 +63,7 @@ const searchBtn = useRef(false);
                         <div className="main-header-wapper">
                             <div className="site-logo">
                                 <Link href="/">
-                                    <Image src="/images/White logo.gif" alt="White logo" width={250} height={30} unoptimized />
+                                    <Image src="/images/White logo.gif"  width={250} height={30} unoptimized />
                                 </Link>
                             </div>
                             <div className="main-header-info">
@@ -98,19 +98,19 @@ const searchBtn = useRef(false);
                                             <Link href="#" data-text="About Us" className="open-sans">About Us</Link>
                                             <ul>
                                                 <li className="bg-hover-black">
-                                                    <Link href="who-we-are" className="open-sans">Who we are</Link>
+                                                    <Link href="/who-we-are" className="open-sans">Who we are</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="our-team" className="open-sans">Our team</Link>
+                                                    <Link href="/our-team" className="open-sans">Our team</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="contact-us" className="open-sans">Contact us</Link>
+                                                    <Link href="/contact-us" className="open-sans">Contact us</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="work-with-us" className="open-sans">Work with us</Link>
+                                                    <Link href="/work-with-us" className="open-sans">Work with us</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="press" className="open-sans">Press</Link>
+                                                    <Link href="/press" className="open-sans">Press</Link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -118,7 +118,7 @@ const searchBtn = useRef(false);
                                             <Link href="#" data-text="Network" className="open-sans">Network</Link>
                                             <ul>
                                                 <li className="bg-hover-black">
-                                                    <Link href="members" className="open-sans">Members</Link>
+                                                    <Link href="/members" className="open-sans">Members</Link>
                                                 </li>
                                             </ul>
                                         </li>
