@@ -33,3 +33,19 @@ a:hover{
     align-items: center;
 }
 
+.open-sans{
+    font-family: "Open Sans", sans-serif!important;
+}
+.prata{
+    font-family: "Prata", serif!important;
+}
+.lora{
+    font-family: "Lora", serif!important;
+}
+
+.hover-a-color:hover{
+    color: white!important;
+}
+.hover-a-b-color:hover{
+    color: black!important;
+}

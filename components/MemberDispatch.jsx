@@ -67,7 +67,7 @@ export default async function MemberDispatch() {
                                     </Link>
                                     <ul className="post-meta">
                                         <li>
-                                            <Link href={`/category/${post_1.post.category.slug}`} className="tag-category">{post_1.post.category.category}
+                                            <Link href={`/category/${post_1.post.category.slug}`} className="tag-category hover-a-b-color">{post_1.post.category.category}
                                             </Link>
                                         </li>
                                     </ul>

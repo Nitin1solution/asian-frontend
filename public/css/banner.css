@@ -159,7 +159,7 @@
 }
 .tag-category-single:hover{
     background-color: var(--category-color);
-    color: black!important;
+    color: black;
     border: none;
 }
 

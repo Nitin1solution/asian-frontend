@@ -99,10 +99,12 @@
 
   .read-article:hover{
     background-color: black;
-    color: white;
+    color: white!important;
   }
 
-
+.subtitle p{
+  font-family: "Open Sans", sans-serif !important;
+}
 
 
 .press-thumbnail {

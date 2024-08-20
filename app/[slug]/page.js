@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic';
 import '../../public/css/single.css';
 import { Suspense } from 'react';
 import Loading from '../loading';
-
+import useAdjustImg from '../../hooks/useAdjustImg';
 
 // function Loading() {
 //   return <div className="main-loader"><Image src={LoadImage} /></div>;
@@ -40,61 +40,8 @@ const PostPage = ({ params }) => {
     fetchData();
   }, [slug]);
 
-  useEffect(() => {
-    if (!post) return;
-
-    const handleImages = () => {
-      const images = document.querySelectorAll('img');
-
-      images.forEach((img) => {
-        const alt = img.getAttribute('alt');
-        const parentDiv = document.createElement('div');
-        parentDiv.classList.add('image-paragraph');
-
-        img.parentNode.insertBefore(parentDiv, img);
-        parentDiv.appendChild(img);
-
-        if (alt) {
-          const captionDiv = document.createElement('div');
-          captionDiv.classList.add('caption');
-          captionDiv.textContent = alt;
-          parentDiv.appendChild(captionDiv);
-          captionDiv.style.padding = '10px';
-        }
-
-        parentDiv.parentElement.classList.add('image-parent');
-      });
-    };
-
-    const handleMedia = () => {
-      const iframes = document.querySelectorAll('iframe');
-
-      iframes.forEach((iframe) => {
-        const src = iframe.getAttribute('src');
-
-        const isAudio = (url) => url.match(/\.(mp3|wav|ogg)$/i);
-        const isVideo = (url) => url.match(/\.(mp4|webm|ogg)$/i);
-
-        if (isAudio(src)) {
-          const audio = document.createElement('audio');
-          audio.setAttribute('controls', '');
-          audio.setAttribute('src', src);
-
-          iframe.parentNode.replaceChild(audio, iframe);
-        } else if (isVideo(src)) {
-          const video = document.createElement('video');
-          video.setAttribute('controls', '');
-          video.setAttribute('src', src);
-
-          iframe.parentNode.replaceChild(video, iframe);
-        }
-      });
-    };
-
-    handleImages();
-    handleMedia();
-  }, [post]);
-
+ 
+  useAdjustImg(post);
   if (!post) {
     return <Loading />;
   }
@@ -133,7 +80,7 @@ const PostPage = ({ params }) => {
                           <li className="h0">
                             <Link
                               href={`/category/${post.category.slug}`}
-                              className="tag-category-single"
+                              className="tag-category-single hover-a-b-color"
                             >
                               {post.category.category}
                             </Link>
@@ -157,7 +104,7 @@ const PostPage = ({ params }) => {
                           window.location.href
                         )}&title=${encodeURIComponent(post.post_title)}`}
                         target="_blank"
-                        className="tag-category-single"
+                        className="tag-category-single hover-a-b-color"
                         rel="noopener noreferrer"
                       >
                         <i className="fa fa-linkedin"></i>
@@ -167,7 +114,7 @@ const PostPage = ({ params }) => {
                           window.location.href
                         )}&text=${encodeURIComponent(post.post_title)}`}
                         target="_blank"
-                        className="tag-category-single"
+                        className="tag-category-single hover-a-b-color"
                         rel="noopener noreferrer"
                       >
                         <i className="bi bi-twitter-x"></i>
@@ -177,7 +124,7 @@ const PostPage = ({ params }) => {
                           window.location.href
                         )}`}
                         target="_blank"
-                        className="tag-category-single"
+                        className="tag-category-single hover-a-b-color"
                         rel="noopener noreferrer"
                       >
                         <i className="fa fa-facebook-f"></i>
@@ -187,7 +134,7 @@ const PostPage = ({ params }) => {
                           window.location.href
                         )}`}
                         target="_blank"
-                        className="tag-category-single"
+                        className="tag-category-single hover-a-b-color"
                         rel="noopener noreferrer"
                       >
                         <i className="fa fa-whatsapp"></i>

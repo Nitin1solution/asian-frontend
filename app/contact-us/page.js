@@ -5,7 +5,11 @@ import Image from 'next/image';
 import '../../public/css/aboutUs/contactUs.css';
 import Icon from '../../public/images/contact/as-icon-email.png';
 
+
 export default function ContactUs() {
+  useEffect(() => {
+    document.title = 'Contact-Us'; // Set the document title dynamically
+}, []);
   useEffect(() => {
     const clocks = [
       { id: 'clock-ist', digitalId: 'digital-clock-ist', offset: 5.5 },
