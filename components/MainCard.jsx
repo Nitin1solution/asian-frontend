@@ -30,7 +30,7 @@ const MainCard = ({ post, users, date }) => {
                     <li>
                         <div className="text-category" style={{ display: 'flex' }}>
                             {users.map((user, index) => (
-                                <Link key={user.id} href={`/author/${user.id}`} className="text-category "style={{ margin: '0px 5px 0px 0px' }}>
+                                <Link key={user.id} href={`/author/${user.id}/${user.name}`} className="text-category "style={{ margin: '0px 5px 0px 0px' }}>
                                         {user.name}{index !== users.length - 1 ? ', ' : ''}
                              
                                 </Link>

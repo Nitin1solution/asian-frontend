@@ -79,7 +79,7 @@ export default async function MemberDispatch() {
                                     <li>
                                         <div className="text-category" style={{ display: 'flex' }}>
                                             {post_1.users.map((user, index) => (
-                                                <Link key={user.id} href={`/author/${user.id}`}
+                                                <Link key={user.id} href={`/author/${user.id}/${user.name}`}
                                                         className="text-category"
                                                         style={{ margin: '0px 5px 0px 0px' }}
                                                     >

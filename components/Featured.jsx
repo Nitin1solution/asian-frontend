@@ -56,7 +56,7 @@ export default async function Featured() {
             <h6 className="mt10">
               {post_1.users.map((user, index) => (
                 <span key={user.id}>
-                  <Link href={`/author/${user.id}`} className="author-dark">
+                  <Link href={`/author/${user.id}/${user.name}`} className="author-dark">
                     {user.name}
                   </Link>
                   {index < post_1.users.length - 1 ? ", " : ""}

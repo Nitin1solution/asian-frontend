@@ -22,7 +22,7 @@ import Loading from "./loading";
         <div className="container">
             <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12">
-                    <div className=""> <Image src="/images/about/Ad_.gif" alt="about us" width={600} height={333} unoptimized/></div>
+                    <div className=""> <img src="/images/about/Ad_.gif" alt="about us" /></div>
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-12">
                     <div className="section-heading mb-30 mt-30 ">

@@ -8,18 +8,23 @@ import '../../public/css/single.css';
 import { Suspense } from 'react';
 import Loading from '../loading';
 import useAdjustImg from '../../hooks/useAdjustImg';
+import Modal from '@/components/Modal';
 
 // function Loading() {
 //   return <div className="main-loader"><Image src={LoadImage} /></div>;
 // }
 
 const PostPage = ({ params }) => {
+
   const slug = params.slug;
   const [post, setPost] = useState(null);
   const [keywords, setKeywords] = useState('');
   const [language, setLanguage] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [userRole, setUserRole] = useState('user');
 
+  
   const handleToggle = () => {
     setIsVisible(!isVisible);
   };
@@ -39,13 +44,34 @@ const PostPage = ({ params }) => {
 
     fetchData();
   }, [slug]);
+  useEffect(() => {
+    const fetchUserRole = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/user-role', {
+          cache: 'no-store'
+      });
 
- 
-  useAdjustImg(post);
+        const data = await response.json();
+        console.log(data);
+        setUserRole(data.role);
+      } catch (error) {
+        console.error('Error fetching user role:', error);
+      }
+    };
+
+    fetchUserRole();
+  }, []);
+
+  useAdjustImg(post, isModalOpen);
+
   if (!post) {
     return <Loading />;
   }
 
+  // useAdjustImg(post);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
   return (
     <>
       <Head>
@@ -95,6 +121,7 @@ const PostPage = ({ params }) => {
                             />
                           </li>
                         )}
+
                       </ul>
                     </li>
                     <li className="social-share">
@@ -167,6 +194,16 @@ const PostPage = ({ params }) => {
                       </span>
                     </div>
                     <div className="d-flex">
+
+                      {userRole === 'member' && (
+
+                        <button id="republish-btn" className="tag-category-single" onClick={openModal}>
+                          Republish
+                        </button>
+                      )}
+                      <Modal isOpen={isModalOpen} onClose={closeModal} />
+
+
                       <div id="language" className="language tag-category-single">
                         <div
                           onClick={handleToggle}
@@ -208,7 +245,7 @@ const PostPage = ({ params }) => {
                         <Link
                           key={tag}
                           href={`/tag/${tag}`}
-                          className="tag-category-single"
+                          className="tag-category-single hover-a-b-color"
                         >
                           {tag}
                         </Link>
@@ -249,6 +286,7 @@ const PostPage = ({ params }) => {
               </div>
             </div>
           )}
+
         </Suspense>
       </section>
     </>

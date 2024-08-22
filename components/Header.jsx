@@ -14,7 +14,7 @@ async function getTopics() {
         }
 
         const data = await res.json();
-        return data.category || []; // Extract the category array or return an empty array if not found
+        return data.category || [];
     } catch (error) {
         console.error(error);
         return [];
@@ -25,7 +25,8 @@ export default function Header() {
     const [topics, setTopics] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchBoxActive, setSearchBoxActive] = useState(false);
-const searchBtn = useRef(false);
+    const searchInputRef = useRef(null);
+
     useEffect(() => {
         async function fetchTopics() {
             const topics = await getTopics();
@@ -35,26 +36,27 @@ const searchBtn = useRef(false);
     }, []);
 
     useEffect(() => {
-       
-      searchBtn.current=!searchBtn.current;
-      
+        const storedSearchBoxActive = localStorage.getItem('searchBoxActive') === 'true';
+        setSearchBoxActive(storedSearchBoxActive);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('searchBoxActive', searchBoxActive);
+        if (searchBoxActive && searchInputRef.current) {
+            searchInputRef.current.focus();
+        }
     }, [searchBoxActive]);
 
     const handleSearch = async (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
+        console.log('Search term submitted:', searchTerm);
         // Add your search functionality here
     };
 
     const handleSearchMenuClick = () => {
-        // console.log('Search menu button clicked');
         setSearchBoxActive(prevState => !prevState);
-        // setSearchBoxActive(!searchBoxActive);
     };
-    // const handleSearchMenuClick = () => {
-    //     console.log('Before toggle:', searchBoxActive);
-    //     setSearchBoxActive(prevState => !prevState);
-    //     console.log('After toggle:', !searchBoxActive); // Expected new state
-    // };
+
     return (
         <>
             <header className="main-header">
@@ -63,7 +65,7 @@ const searchBtn = useRef(false);
                         <div className="main-header-wapper">
                             <div className="site-logo">
                                 <Link href="/">
-                                    <Image src="/images/White logo.gif"  width={250} height={30} unoptimized />
+                                    <Image src="/images/White logo.gif" width={250} height={30} unoptimized />
                                 </Link>
                             </div>
                             <div className="main-header-info">
@@ -144,20 +146,21 @@ const searchBtn = useRef(false);
                             </div>
                         </div>
                   
-                        <div key={searchBoxActive} className={`main-header-search ${searchBoxActive ? 'active' : ''}`}>
-                                <form onSubmit={handleSearch} className="search-form">
-                                    <input
-                                        type="text"
-                                        placeholder="Search..."
-                                        value={searchTerm}
-                                        onChange={(e) => setSearchTerm(e.target.value)}
-                                        required
-                                    />
-                                    <button type="submit">
-                                        <i className="fa fa-search"></i>
-                                    </button>
-                                </form>
-                            </div>
+                        <div className={`main-header-search ${searchBoxActive ? 'active' : ''}`}>
+                            <form onSubmit={handleSearch} className="search-form">
+                                <input
+                                    ref={searchInputRef}
+                                    type="text"
+                                    placeholder="Search..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                    required
+                                />
+                                <button type="submit">
+                                    <i className="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
                      
                     </div>
                 </div>

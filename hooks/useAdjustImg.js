@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
-const useAdjustImg = (post) => {
+const useAdjustImg = (post, isEnabled) => {
   useEffect(() => {
-    if (!post) return;
+    if ( !post) return;
 
     const handleImages = () => {
       const images = document.querySelectorAll('img');
@@ -54,7 +54,7 @@ const useAdjustImg = (post) => {
 
     handleImages();
     handleMedia();
-  }, [post]);
+  }, [post, isEnabled]);
 };
 
 export default useAdjustImg;
