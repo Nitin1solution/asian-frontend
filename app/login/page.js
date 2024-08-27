@@ -25,19 +25,19 @@ export default function LoginPage() {
         headers: {
           'Content-Type': 'application/json',
           // 'X-CSRF-TOKEN': csrfToken,
-          
+
         },
         body: JSON.stringify({ email, password }),
       });
 
       const roleData = await roleResponse.json();
-
+      console.log(roleData);
       if (roleResponse.ok && roleData.success) {
         // Store role in localStorage
         localStorage.setItem('role', roleData.role);
 
         // Send the second request to the login URL
-        const loginResponse = await fetch('http://127.0.0.1:8000/login', {
+        const loginResponse = await fetch('http://127.0.0.1:8000/api/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -47,13 +47,13 @@ export default function LoginPage() {
         });
 
         const loginData = await loginResponse.json();
+        console.log(loginData);
+
 
         if (loginResponse.ok) {
-          // Store token in localStorage
-          localStorage.setItem('token', loginData.token);
+          window.location.href = loginData.dashboard_url;
 
-          // Redirect to the specified path
-          // router.push(roleData.redirectPath);
+
         } else {
           setError(loginData.error || 'Login failed');
         }
@@ -61,43 +61,15 @@ export default function LoginPage() {
         setError(roleData.error || 'Failed to retrieve user role');
       }
     } catch (error) {
-      setError('An error occurred. Please try again.'+ error);
+      setError('An error occurred. Please try again.' + error);
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
 
-  //   try {
-  //     const response = await fetch('http://127.0.0.1:8000/api/login', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ email, password }),
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (response.ok) {
-  //       // Store role in localStorage
-  //       localStorage.setItem('role', data.role);
-
-  //       // Redirect or perform other actions based on role
-  //       window.location.href = data.redirectPath;
-  //     } else {
-  //       setError(data.error || 'Login failed');
-  //     }
-  //   } catch (error) {
-  //     setError('An error occurred. Please try again.');
-  //   }
-  // };
 
   return (
     <>
-    <Head>
-    <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    </Head>
+
       <div className={Styles.container}>
         <div className={Styles.box}>
           <div className={Styles.image}>

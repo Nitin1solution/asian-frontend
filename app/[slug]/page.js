@@ -24,6 +24,7 @@ const PostPage = ({ params }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [userRole, setUserRole] = useState('user');
 
+ 
   
   const handleToggle = () => {
     setIsVisible(!isVisible);
@@ -44,25 +45,36 @@ const PostPage = ({ params }) => {
 
     fetchData();
   }, [slug]);
-  useEffect(() => {
-    const fetchUserRole = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:8000/api/user-role', {
-          cache: 'no-store'
-      });
 
-        const data = await response.json();
-        console.log(data);
-        setUserRole(data.role);
+
+
+  useEffect(() => {
+    const fetchRole = async () => {
+      try {
+        const response = await fetch('http:/factfirst/backend/asian/api/user', {
+          credentials: 'include', // Important: This ensures cookies are sent
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setUserRole(data.role);
+        } else {
+          console.error('Failed to fetch role');
+        }
       } catch (error) {
-        console.error('Error fetching user role:', error);
+        console.error('Error fetching role:', error);
       }
     };
 
-    fetchUserRole();
-  }, []);
+    fetchRole();
+  });
+
+
 
   useAdjustImg(post, isModalOpen);
+
+
 
   if (!post) {
     return <Loading />;

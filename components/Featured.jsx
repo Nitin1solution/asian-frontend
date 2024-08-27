@@ -101,6 +101,7 @@ export default async function Featured() {
                     alt={postObj.post.post_title}
                     width={100}
                     height={75}
+                      objectFit="cover"
                     unoptimized
                   />
                 </div>

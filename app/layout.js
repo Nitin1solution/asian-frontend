@@ -12,6 +12,7 @@ import "../public/css/main.css";
 import "../public/css/bannernew.css";
 import "../public/css/responsive1920.css";
 import "../public/css/tablet.css";
+import "../public/css/landscapeMobile.css";
 import { Suspense } from 'react';
 import Loading from "./loading";
 

@@ -89,7 +89,7 @@ async function CategoryPage({ params }) {
                                                         <Image
                                                             src={post.post_fr_img}
                                                             alt={post.post_title}
-                                                            layout="responsive"
+                                                            fill
                                                             width={494.4}
                                                             height={393.4}
                                                             unoptimized

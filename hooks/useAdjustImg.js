@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 const useAdjustImg = (post, isEnabled) => {
   useEffect(() => {
-    if ( !post) return;
+    if (!post) return;
 
     const handleImages = () => {
       const images = document.querySelectorAll('img');
@@ -51,10 +51,34 @@ const useAdjustImg = (post, isEnabled) => {
         }
       });
     };
+    const handleBlockquote = () => {
+      const blockquotes = document.querySelectorAll('blockquote');
 
+      blockquotes.forEach(blockquote => {
+        // Find all p elements inside each blockquote
+        const paragraphs = blockquote.querySelectorAll('p');
+
+        paragraphs.forEach((paragraph) => {
+          // Find the span inside the p tag
+          const span = paragraph.querySelector('span');
+
+          if (span) {
+            // Move the style from span to p
+            paragraph.style.cssText += span.style.cssText;
+
+            // Move the inner content of span to p
+            paragraph.innerHTML = span.innerHTML;
+
+            // Remove the span element
+            span.remove();
+          }
+        });
+      });
+    }
     handleImages();
     handleMedia();
-  }, [post, isEnabled]);
+    handleBlockquote();
+  });
 };
 
 export default useAdjustImg;

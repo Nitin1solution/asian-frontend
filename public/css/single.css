@@ -126,9 +126,10 @@ gap: 10px;
   gap: 10px;
 }
 .single-post-content a{
-  /* color: blue; */
+  position: relative;
   text-decoration: underline;
-  font-family: "Lora", serif!important;
+  font-family: "Lora", serif !important;
+  z-index: 10000;
 }
 .single-post-content a:hover{
   color: blue;
@@ -340,7 +341,7 @@ blockquote {
 
 }
 
-blockquote p {
+blockquote p ,blockquote span{
   font-family: "Quicksand", sans-serif !important;
 }
 
@@ -542,27 +543,7 @@ iframe {
       rgba(0, 0, 0, 1) 75%,
       transparent)
 }
-.modal-content p,
-.modal-content h1,
-.modal-content h2,
-.modal-content h3,
-.modal-content h4,
-.modal-content h5,
-.modal-content h6,
-.modal-content a,
-.modal-content span {
-    color: white!important;
-}
-.modal-content blockquote{
-    /* color:black!important; */
-    background-color: black!important;
-}
-.modal-content  .hover-a-b-color{
-  background-color: black!important;
-}
-.modal-content  .hover-a-b-color:hover{
-  background-color: var(--category-color);
-}
+
 #brand-img-container img{
   width: 300px!important;
   height: 200px!important;

@@ -49,3 +49,12 @@ a:hover{
 .hover-a-b-color:hover{
     color: black!important;
 }
+.main-header-search {
+    display: none;
+    /* other styles */
+}
+
+.main-header-search.active {
+    display: block;
+    /* other styles for visible state */
+}

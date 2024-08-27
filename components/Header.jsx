@@ -47,14 +47,14 @@ export default function Header() {
         }
     }, [searchBoxActive]);
 
-    const handleSearch = async (e) => {
+    const handleSearch = (e) => {
         e.preventDefault();
         console.log('Search term submitted:', searchTerm);
-        // Add your search functionality here
+        // Implement search functionality here
     };
 
     const handleSearchMenuClick = () => {
-        setSearchBoxActive(prevState => !prevState);
+        setSearchBoxActive((prevState) => !prevState);
     };
 
     return (
@@ -65,20 +65,27 @@ export default function Header() {
                         <div className="main-header-wapper">
                             <div className="site-logo">
                                 <Link href="/">
-                                    <Image src="/images/White logo.gif" width={250} height={30} unoptimized />
+                                    <Image
+                                        src="/images/White-logo.gif"
+                                        width={250}
+                                        height={30}
+                                        unoptimized
+                                        priority
+                                        style={{ width: '250px', height: '30px' }}
+                                    />
                                 </Link>
                             </div>
                             <div className="main-header-info">
                                 <div className="header-menu-wrap">
                                     <ul className="nav-menu">
                                         <li>
-                                            <Link href="#" data-text="Newsroom" className="open-sans">Newsroom</Link>
+                                            <Link href="#" data-text="Newsroom" className="open-sans hover-a-color">Newsroom</Link>
                                             <ul>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/original-reporting" className="open-sans">Original Reporting</Link>
+                                                    <Link href="/original-reporting" className="open-sans hover-a-color">Original Reporting</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/members-dispatch" className="open-sans">Members' Dispatch</Link>
+                                                    <Link href="/members-dispatch" className="open-sans hover-a-color">Members' Dispatch</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
                                                     <Link href="#" className="open-sans">
@@ -97,30 +104,30 @@ export default function Header() {
                                             </ul>
                                         </li>
                                         <li>
-                                            <Link href="#" data-text="About Us" className="open-sans">About Us</Link>
+                                            <Link href="#" data-text="About Us" className="open-sans hover-a-color">About Us</Link>
                                             <ul>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/who-we-are" className="open-sans">Who we are</Link>
+                                                    <Link href="/who-we-are" className="open-sans hover-a-color">Who we are</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/our-team" className="open-sans">Our team</Link>
+                                                    <Link href="/our-team" className="open-sans hover-a-color">Our team</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/contact-us" className="open-sans">Contact us</Link>
+                                                    <Link href="/contact-us" className="open-sans hover-a-color">Contact us</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/work-with-us" className="open-sans">Work with us</Link>
+                                                    <Link href="/work-with-us" className="open-sans hover-a-color">Work with us</Link>
                                                 </li>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/press" className="open-sans">Press</Link>
+                                                    <Link href="/press" className="open-sans hover-a-color">Press</Link>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <Link href="#" data-text="Network" className="open-sans">Network</Link>
+                                            <Link href="#" data-text="Network" className="open-sans hover-a-color">Network</Link>
                                             <ul>
                                                 <li className="bg-hover-black">
-                                                    <Link href="/members" className="open-sans">Members</Link>
+                                                    <Link href="/members" className="open-sans hover-a-color">Members</Link>
                                                 </li>
                                             </ul>
                                         </li>
