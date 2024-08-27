@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import '../../public/css/aboutUs/workWithUS.css';
+import '../../public/css/aboutUs/workWithUs.css';
 import dynamic from 'next/dynamic';
 export  function generateMetadata() {
 
