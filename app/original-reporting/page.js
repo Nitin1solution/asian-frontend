@@ -73,7 +73,7 @@ export  function generateMetadata() {
                                                             <Image
                                                                 src={post.post_fr_img}
                                                                 alt={post.post_title}
-                                                                fill
+                                                         
                                                                 width={494.4}
                                                                 height={393.4}
                                                                 unoptimized
