@@ -189,7 +189,7 @@
 
 .inner-box h3 {
     height: 128px;
-    font-size: 24px;
+    font-size: 26px;
     line-height: 32px;
     text-align: center;
 }
@@ -594,7 +594,7 @@ margin-top: 5px ;
 
 
 /* Tab */
-@media screen and (min-device-width: 482px) and (max-device-width: 901px) {
+@media screen and (min-device-width: 482px) and (max-device-width: 1180px) {
 
 
     .banner-new {

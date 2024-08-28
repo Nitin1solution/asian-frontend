@@ -51,8 +51,16 @@ font-family: var(--dl-heading-font)!important;
     line-height: 20px !important;
 }
 
+@media (max-width:1080px){
+    .category-title {
+        font-size: 24px !important;
+        line-height: 40px !important;
+      
+    }
+
+}
 /* Mobile */
-@media screen and (max-width: 481px) {
+@media  (max-width: 481px) {
     .main-header-category {
         height: auto;
         padding: 20px;
@@ -68,17 +76,14 @@ font-family: var(--dl-heading-font)!important;
         
         line-height: 1.2;
     }
-}
-
-
-@media (max-width:1080px){
     .category-title {
         font-size: 24px !important;
-        line-height: 40px !important;
+        line-height: 34px !important;
       
     }
-
 }
+
+
 
 
 

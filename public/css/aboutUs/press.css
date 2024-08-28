@@ -99,12 +99,10 @@
 
   .read-article:hover{
     background-color: black;
-    color: white!important;
+    color: white;
   }
 
-.subtitle p{
-  font-family: "Open Sans", sans-serif !important;
-}
+
 
 
 .press-thumbnail {
@@ -236,7 +234,9 @@ p {
   }
 
   @media(max-width:450px){
-
+    .sub-heading-press p {
+text-align: center;
+    }
 .press{
     flex-direction: column;
 }
