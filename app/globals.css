@@ -32,7 +32,10 @@ a:hover{
     justify-content: center;
     align-items: center;
 }
-
+.main-loader img{
+    width: 100%;
+    height: 100%;
+}
 .open-sans{
     font-family: "Open Sans", sans-serif!important;
 }
