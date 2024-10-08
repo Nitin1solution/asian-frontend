@@ -1,7 +1,8 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation'; 
 
 async function getTopics() {
     try {
@@ -25,7 +26,7 @@ export default function Header() {
     const [topics, setTopics] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchBoxActive, setSearchBoxActive] = useState(false);
-    const searchInputRef = useRef(null);
+    const router = useRouter();
 
     useEffect(() => {
         async function fetchTopics() {
@@ -36,25 +37,31 @@ export default function Header() {
     }, []);
 
     useEffect(() => {
-        const storedSearchBoxActive = localStorage.getItem('searchBoxActive') === 'true';
-        setSearchBoxActive(storedSearchBoxActive);
+        const storedValue = localStorage.getItem('searchBoxActive');
+        if (storedValue !== null) {
+            setSearchBoxActive(JSON.parse(storedValue));
+        }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('searchBoxActive', searchBoxActive);
-        if (searchBoxActive && searchInputRef.current) {
-            searchInputRef.current.focus();
-        }
+        localStorage.setItem('searchBoxActive', JSON.stringify(searchBoxActive));
     }, [searchBoxActive]);
 
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log('Search term submitted:', searchTerm);
-        // Implement search functionality here
+        if (searchTerm.trim()) {
+            router.push(`/search/${encodeURIComponent(searchTerm)}`);
+        }
     };
 
     const handleSearchMenuClick = () => {
-        setSearchBoxActive((prevState) => !prevState);
+        console.log('Search button clicked');
+        setSearchBoxActive((prevState) => {
+            const newState = !prevState;
+            localStorage.setItem('searchBoxActive', JSON.stringify(newState));
+            console.log('New state:', newState);
+            return newState;
+        });
     };
 
     return (
@@ -156,10 +163,10 @@ export default function Header() {
                         <div className={`main-header-search ${searchBoxActive ? 'active' : ''}`}>
                             <form onSubmit={handleSearch} className="search-form">
                                 <input
-                                    ref={searchInputRef}
                                     type="text"
                                     placeholder="Search..."
                                     value={searchTerm}
+                                    name='search'
                                     onChange={(e) => setSearchTerm(e.target.value)}
                                     required
                                 />
