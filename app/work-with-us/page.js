@@ -9,41 +9,36 @@ export  function generateMetadata() {
         
     };
 }
+async function getData() {
+    try {
+        const res = await fetch("https://asiandispatch.net/api/workwithus", {
+            cache: 'no-store'
+        });
 
- function page() {
+        if (!res.ok) {
+            throw new Error("Failed to fetch data");
+        }
+
+        return res.json();
+    } catch (error) {
+        console.error(error);
+        return { posts: [] }; // Return an empty posts array on error
+    }
+}
+async function page() {
+    const data = await getData();
+    const posts = data.data || []; 
+    // console.log(posts);
   return (
    <>
      <section className="container">
         <div className="heading-div section-heading">
 
-            <h2 className="short-line">Work with Us</h2>
+            <h2 className="short-line">{posts.post_title}</h2>
         </div>
-        <div className="content">
-            <p> We are always on the lookout for talented individuals who share our passion for ground breaking
-                investigative
-                journalism.</p>
-
-            <p> If you share our enthusiasm to produce journalism that advances the public interest and brings together the
-                voices
-                of the Asian continent:</p>
-            <p> <strong>Write to us with a brief cover letter outlining your experience and why you fit in the team
-                    along with a CV (two page maximum) on:</strong>
-            </p>
-            <div>
-
-                <Link href="mailto:careers@asiandispatch.net" className="button-dark" target="_blank">
-                careers@asiandispatch.net
-                </Link>
-    
-
-            </div>    
-
-
-            <p><strong> Kindly send the cover letter and CV in a single PDF file with the naming convention “NAME_ASIAN
-                    DISPATCH”. And
-                    please use “Query for Openings” in the subject line.
-                </strong></p>
-
+        <div className="content" dangerouslySetInnerHTML={{ __html: posts.post_content }}>
+         
+     
 
         </div>
 

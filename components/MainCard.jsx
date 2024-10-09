@@ -13,8 +13,8 @@ const MainCard = ({ post, users, date }) => {
             </Link>
             <div className="post-content">
                 <h3>
-                    <Link href={`/${post.post_slug}`} className={`text-hover-category prata`}>
-                            {post.post_title.split(' ').slice(0, 8).join(' ')}
+                    <Link href={`/${post.post_slug}`} className={`text-hover-category prata fw-6`} >
+                            {post.post_title.split(' ').slice(0, 15).join(' ')}
                         
                     </Link>
                 </h3>

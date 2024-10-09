@@ -25,6 +25,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Prata&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+
 :root {
     /* --dl-heading-font: "Jost", sans-serif; */
     /* --dl-body-font: "Jost", sans-serif; */
@@ -60,6 +63,21 @@
 .lora{
     font-family: "Lora", serif!important;
 }
+.helvetica{
+    font-family: 'Helvetica Neue';
+}
+
+.fwnormal{
+    font-weight: normal !important;
+}
+.fwbold{
+    font-weight: bold !important;
+}
+.fw500{
+    font-weight: 500 !important;
+}
+
+
 body {
     background-color: var(--dl-bg-white);
     font-family: var(--dl-body-font);
@@ -130,10 +148,15 @@ p {
     margin-bottom: 15px;
 }
 
-a {
-   font-family: "Open Sans", sans-serif!important;
+a{
+   font-family: "Helvetica Neue" !important;
+   font-weight: 500 !important;
     color: var(--dl-heading-color);
 }
+a>p.dark-tag-category {
+    font-family: "Helvetica Neue" !important;
+    font-weight: 500 !important;
+ }
 .fs-18{
     font-size: 18px;
 }
@@ -4675,4 +4698,26 @@ body.modal-open{
     [data-theme="dark"] .menu-right-item{
         --dl-heading-color: var(--dl-body-color);
     } */
+}
+
+.fboldi{
+    font-weight: bold !important;
+}
+
+.lh32i{
+    line-height: 32px !important;
+}
+
+.mb10i{
+    margin-bottom: 10px !important;
+}
+
+.fs24i{
+    font-size: 24px !important;
+}
+.lh25i{
+    line-height: 25px !important;
+}
+.fs18i{
+    font-size: 18px !important;
 }

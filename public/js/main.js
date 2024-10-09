@@ -391,17 +391,6 @@
     //     // now this script can find and listen for clicks on the control
     //     document.querySelector('#theme-toggle').addEventListener('click', onClick);
     // }
-    window.onload = () => {
-        reflectPreference();
-        
-        const themeToggleButton = document.querySelector('#theme-toggle');
-        if (themeToggleButton) {
-            themeToggleButton.addEventListener('click', onClick);
-        } else {
-            console.error('Element #theme-toggle not found');
-        }
-    };
-    
     
     // sync with system changes
     //window.matchMedia('(prefers-color-scheme: dark)')

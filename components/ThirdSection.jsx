@@ -28,13 +28,7 @@ const HoverSection = ({ post, users, category, boxid, id }) => {
     >
       <Link
         href={sec_url}
-        style={{
-          display: 'block',
-          color: 'white',
-          textDecoration: 'none',
-          padding: '20px',
-          position: 'relative',
-        }}
+      
       >
         <div className="inner-box">
           <h3>{sec_title}</h3>
@@ -50,7 +44,7 @@ const HoverSection = ({ post, users, category, boxid, id }) => {
             </Link>
           </div>
           <div>
-            <span>By {sec_author}</span>
+            <span className="homepage-third-author">By {sec_author}</span>
             <span style={{ marginLeft: '8px' }}>{sec_date}</span>
           </div>
           <div className="arrow">
