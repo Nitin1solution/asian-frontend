@@ -210,12 +210,13 @@ border-radius: 50%;
 .main-header-search {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out!important;
 }
 
 .main-header-search.active {
     max-height: 100px;
     padding: 0px 0 20px 0px;
+  
 }
 
 .main-header-search input {

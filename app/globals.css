@@ -52,12 +52,15 @@ a:hover{
 .hover-a-b-color:hover{
     color: black!important;
 }
+
 .main-header-search {
-    display: none;
-    /* other styles */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out!important;
 }
 
 .main-header-search.active {
-    display: block;
-    /* other styles for visible state */
+    max-height: 100px;
+    padding: 0px 0 20px 0px;
+  
 }

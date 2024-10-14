@@ -36,16 +36,6 @@ export default function Header() {
         fetchTopics();
     }, []);
 
-    useEffect(() => {
-        const storedValue = localStorage.getItem('searchBoxActive');
-        if (storedValue !== null) {
-            setSearchBoxActive(JSON.parse(storedValue));
-        }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('searchBoxActive', JSON.stringify(searchBoxActive));
-    }, [searchBoxActive]);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -54,15 +44,7 @@ export default function Header() {
         }
     };
 
-    const handleSearchMenuClick = () => {
-        console.log('Search button clicked');
-        setSearchBoxActive((prevState) => {
-            const newState = !prevState;
-            localStorage.setItem('searchBoxActive', JSON.stringify(newState));
-            console.log('New state:', newState);
-            return newState;
-        });
-    };
+   
 
     return (
         <>
@@ -142,7 +124,7 @@ export default function Header() {
                                 </div>
                                 {/* Search functionality */}
                                 <div className="menu-right-item">
-                                    <button className="menu-search" id="search-menu" onClick={handleSearchMenuClick}>
+                                    <button className="menu-search" id="search-menu" >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 14.811 14.811">
                                             <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" transform="translate(-2.25 -2.25)">
                                                 <circle cx="5.5" cy="5.5" r="5.5" data-name="Ellipse 7" transform="translate(3 3)"></circle>
@@ -160,7 +142,7 @@ export default function Header() {
                             </div>
                         </div>
                   
-                        <div className={`main-header-search ${searchBoxActive ? 'active' : ''}`}>
+                        <div className={`main-header-search`}>
                             <form onSubmit={handleSearch} className="search-form">
                                 <input
                                     type="text"

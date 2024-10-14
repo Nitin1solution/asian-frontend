@@ -398,5 +398,11 @@
     //        theme.value = isDark ? 'dark' : 'light';
     //    setPreference();
     //});
+  
+    document.querySelector('#search-menu').addEventListener('click', function() {
+        const searchBox = document.querySelector('.main-header-search');
+        searchBox.classList.toggle('active');
+    });
+
 
 })(jQuery);
