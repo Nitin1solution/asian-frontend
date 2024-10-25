@@ -38,35 +38,122 @@
 .image_with_text_right,.accordion_section,
 .swiper-container,
 .audio,
+.embed_section,
 .video {
     padding: var(--single-page-padding);
 }
-
+.single-new-post-content p {
+    padding-top: 0px !important;
+    word-break: break-word;
+    margin-top: 20px!important;
+  }
+.single-new-post-content h2 {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-size: 24px;
+    line-height: 42px;
+    letter-spacing: 0px;
+    font-weight: 600 !important;
+  }
+  .single-new-post-content h3 {
+    margin-top: 20px;
+    font-size: 22px!important;
+    line-height: 40px!important;
+    letter-spacing: 0px!important;
+    font-weight: 600 !important;
+  }
+  .single-new-post-content h4{
+    margin-top: 20px;
+    font-size: 22px!important;
+    line-height: 38px!important;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 0px!important;
+    font-weight: 600 !important;
+  }
+  .single-new-post-content h5{
+    margin-top: 20px;
+    font-size: 20px!important;
+    line-height: 30px!important;
+    font-family: "Quicksand", sans-serif;
+    letter-spacing: 0px!important;
+    font-weight: 600!important;
+  }
+  
+  .single-new-post-content h6{
+    margin-top: 20px;
+    width: 100%;
+    color: black;
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    font-style: italic;
+    /* padding:0px 10px 10px 0px ; */
+    line-height: 18px;
+  }
+  
+  .single-new-post-content h6 a{
+  
+    font-family: "Quicksand", sans-serif!important;
+  }
+  .single-new-post-content a{
+    position: relative;
+    text-decoration: underline;
+    font-family: "Lora", serif !important;
+    z-index: 10000;
+  }
+  .single-new-post-content a:hover{
+    color:var(--category-color)!important;
+    text-decoration: none;
+  }
+ 
+  .single-new-post-content p {
+    font-family: var(--dl-short-description);
+    font-size: 18px !important;
+    color: var(--dl-heading-color);
+    margin-bottom: 0;
+  
+    /* display: flex; */
+  
+    /* gap: 20px; */
+  
+    font-weight: 500 !important;
+  }
+  
+  .single-new-post-content .image_wrapper  p {
+    
+    font-size: 14px !important;
+   
+  }
+  .tags a {
+    font-family: "Helvetica Neue" !important;
+    font-weight: 500 !important;
+    color: var(--dl-heading-color);
+}
 .editor_bg {
     padding-top: 10px;
     padding-bottom: 2px;
 }
-
-
+/*  */
 .image_section1 {
     width: 100%;
-    margin:15px 0px 5px 0px;
+    margin:0px 0px 0px 0px;
 }
 .image_section1 .image_wrapper{
     text-align: center;
 }
 .image_section2,
 .image_section3 {
-    margin:15px 0px 5px 0px;
+    margin:0px 0px 0px 0px;
     display: flex;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 .image_section2 .image_wrapper img {
     max-height: 400px;
 }
 .image_section3 .image_wrapper img {
-    max-height: 250px;
+    max-height: 100%;
 }
 
 .image_wrapper {
@@ -86,12 +173,12 @@
 .image_wrapper .caption {
     position: absolute;
     background: rgba(0, 0, 0, 0.25);
-    bottom: -15px;
+    bottom: 0;
     left: 0;
     width: 100%;
     color: white;
     font-family: "Quicksand", sans-serif;
-    font-size: 14px;
+    font-size: 14px!important;
     font-weight: 600;
     text-align: left;
     font-style: italic;
@@ -105,7 +192,7 @@
 }
 
 .image_with_text_left {
-    margin:15px 0px 5px 0px;
+    margin:0px 0px 0px 0px;
     display: flex;
     /* flex-wrap: wrap; */
     gap: 40px;
@@ -121,7 +208,7 @@
 }
 
 .image_with_text_right {
-    margin:15px 0px 5px 0px;
+    margin:0px 0px 0px 0px;
     display: flex;
     flex-direction: row-reverse;
     /* flex-wrap: wrap; */
@@ -150,10 +237,15 @@
 }
 
 
-.accordion_section ul {
+.accordion_section>ul {
     margin:15px 0px 5px 0px;
     list-style: none;
     padding: 0;
+}
+
+.accordion_section>ul>li>.inner>ul{
+    list-style: disc;
+    padding-left: 2rem;
 }
 
 .accordion_section ul .inner {
@@ -164,6 +256,7 @@
     line-height: 28px;
     margin-bottom: 15px;
     padding: 10px;
+    border: 1px solid var(--category-color);
 }
 
 .accordion_section ul li {
@@ -185,9 +278,9 @@
     transition: background 0.3s ease;
     text-decoration: none;
 }
-.single-new-container a{
-    font-family: "Lora", serif!important;
-}
+/* .single-new-container a{
+    font-family: "Lora", serif !important;
+} */
 
 .accordion_section ul li a.toggle:hover {
     background: rgba(0, 0, 0, 0.9);
@@ -201,11 +294,13 @@
 
 
 /* Slider Css */
-
+.swiper-wrapper{
+    align-items:center;
+}
 .swiper-slide {
-    margin:15px 0px 5px 0px;
-    min-height: 400px !important;
-    height: 400px !important;
+    margin:0px 0px 5px 0px;
+    /* min-height: 400px !important; */
+    /* height: 400px !important; */
 }
 
 .swiper-slide {
@@ -221,18 +316,22 @@
 }
 
 .swiper-slide.swiper-slide-active>img{
-    object-fit: contain;
+    /* object-fit: contain; */
+    object-fit: fill;
+    height: auto !important;
 }
 
 .swiper-button-next, .swiper-button-prev {
     position: relative;
-    margin-top: -25%;
+    margin-top: -35%;
 }
 .swiper-button-next {
     float: right;
+    margin-right: -5%;
 }
 .swiper-button-prev {
     float: left;
+    margin-left: -5%;
 }
 .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after,
 .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
@@ -240,10 +339,16 @@
     color: #000;
 }
 .fullscreen_section{
-    margin:15px 0px 5px 0px;
-    display: flex;
+    margin:0px 0px 0px 0px;
+    /* display: flex; */
     justify-content: center;
 }
+
+.fullscreen_section>.video_wrapper,
+.fullscreen_section>.embed_wrapper{
+    width: 100%;
+}
+
 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
    display: none!important;
 }
@@ -251,7 +356,19 @@
     color: var(--category-color)!important;
 }
 
-.editor_table table{
-    width: 100%!important;
-    overflow: scroll;
+
+.editor_table{
+    overflow-x: auto;
+    padding: 0px;
+    margin: 0px 20%;
 }
+
+.editor_table table{
+    max-width: 100% !important;
+}
+
+.editor_table table tr td a{
+    color: blue;
+}
+
+

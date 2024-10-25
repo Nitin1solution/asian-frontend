@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export async function getData() {
     try {
-        const res = await fetch('https://asiandispatch.net/api/partners', {
+        const res = await fetch('https://admin.asiandispatch.net/api/partners', {
             cache: 'no-store'
         });
 

@@ -3079,6 +3079,10 @@ background-color: black !important;
     color: var(--dl-heading-color);
     margin-bottom: 0;
 }
+/* .single-new-post-content > * {
+    margin-top: 20px;
+} */
+
 
 @media(max-width: 767px) {
     .single-post-thumb {

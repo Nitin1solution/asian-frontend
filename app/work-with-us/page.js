@@ -11,7 +11,7 @@ export  function generateMetadata() {
 }
 async function getData() {
     try {
-        const res = await fetch("https://asiandispatch.net/api/workwithus", {
+        const res = await fetch("https://admin.asiandispatch.net/api/workwithus", {
             cache: 'no-store'
         });
 

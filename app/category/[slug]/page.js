@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 
 async function getData(slug) {
     try {
-        const res = await fetch(`https://asiandispatch.net/api/category/${slug}`, {
+        const res = await fetch(`https://admin.asiandispatch.net/api/category/${slug}`, {
             cache: 'no-store'
         });
 

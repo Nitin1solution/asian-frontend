@@ -10,7 +10,7 @@ function formatDate(dateString) {
 export async function getData(slug) {
   try {
     const res = await fetch(
-      `https://asiandispatch.net/api/search?search=${slug}`,
+      `https://admin.asiandispatch.net/api/search?search=${slug}`,
       {
         cache: "no-store",
       }

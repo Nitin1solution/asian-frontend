@@ -1,7 +1,7 @@
 import Link from "next/link";
 async function getTopics() {
     try {
-        const res = await fetch('https://asiandispatch.net/api/menu', {
+        const res = await fetch('https://admin.asiandispatch.net/api/menu', {
             cache: 'no-store',
         });
 

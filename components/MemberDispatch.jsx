@@ -4,7 +4,7 @@ import MainCard from "./MainCard";
 
 export async function getData() {
     try {
-        const res = await fetch('https://asiandispatch.net/api/member', {
+        const res = await fetch('https://admin.asiandispatch.net/api/member', {
             cache: 'no-store'
         });
 

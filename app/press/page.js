@@ -11,7 +11,7 @@ function formatDate(dateString) {
 
 export async function getData() {
     try {
-        const res = await fetch(`https://asiandispatch.net/api/press`, {
+        const res = await fetch(`https://admin.asiandispatch.net/api/press`, {
             cache: 'no-store'
         });
 

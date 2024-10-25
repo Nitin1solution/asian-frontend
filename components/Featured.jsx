@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Suspense } from 'react';
 export async function getData() {
   try {
-    const res = await fetch("https://asiandispatch.net/api/featured", {
+    const res = await fetch("https://admin.asiandispatch.net/api/featured", {
       cache: 'no-store'
     });
 

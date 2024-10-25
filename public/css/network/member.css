@@ -12,25 +12,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  width: 100%;
-  height: 100%;
-    animation: changeBackground 5s ;
+    width: 100%;
+    height: 100%;
+    animation: changeBackground 5s;
 }
+
 @keyframes changeBackground {
-   
+
     0% {
         background-color: white;
-     
+
         height: 0%;
-  
+
     }
+
     100% {
         background-color: red;
-  
+
         height: 100%;
-    
+
     }
 }
+
 /* .animated-text {
     position: relative;
     display: inline-block;
@@ -57,15 +60,16 @@
     background-color: #ff0000;
    
   } */
-  .animated-text {
+.animated-text {
     position: relative;
     display: inline-block;
     color: black;
     font-size: 44px;
-    transition: color 3s 1s; /* Add 1s delay for text color transition */
-  }
-  
-  .animated-text::before {
+    transition: color 3s 1s;
+    /* Add 1s delay for text color transition */
+}
+
+.animated-text::before {
     content: "";
     position: absolute;
     top: 0;
@@ -76,26 +80,67 @@
     background-color: transparent;
     transition: width 3s, height 3s, background-color 3s;
     z-index: -1;
-  }
-  
-  .animated-text.animate::before {
+}
+
+.animated-text.animate::before {
     width: 100%;
     height: 100%;
     background-color: #ff0000;
-  }
-  
-  .animated-text.animate {
-    color: white; /* Change text color when animate class is added */
-  }
-  
+}
+
+.animated-text.animate {
+    color: white;
+    /* Change text color when animate class is added */
+}
+
 .member {
     display: flex;
     gap: 40px;
 }
 
-.member .left-member{
+/* .member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+} */
+
+.partner-left {
+    display: flex;
+    gap: 20px;
+
+}
+
+.partner-right {
+    display: flex;
+    gap: 20px;
+    flex-direction: row-reverse;
+
+
+}
+
+.partner-image {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-detail {
+    width: 50%;
+    padding: 5%;
+
+}
+
+
+.left .detail,
+.right .detail {
+    margin-left: 10px;
+}
+
+.member .left-member {
     width: 55%;
 }
+
 .member .right-member {
     width: 40%;
 
@@ -235,18 +280,20 @@ figure {
 .right ul {
     padding: 20px 20px;
 }
-@media (max-width:1400px){
-    
+
+@media (max-width:1400px) {
+
     .short-line {
-      
+
         font-size: 31px !important;
         line-height: 65px !important;
-        
+
     }
+
     .animated-text {
-       
+
         font-size: 40px;
-       
+
     }
 }
 
@@ -256,12 +303,14 @@ figure {
         grid-template-columns: repeat(3, 1fr) !important;
 
     }
+
     .short-line {
         font-size: 31px !important;
         line-height: 57px !important;
     }
+
     .short-line::after {
-       
+
         left: 31%;
     }
 }
@@ -291,20 +340,45 @@ figure {
         width: 100%;
 
     }
+
     .short-line {
 
         font-size: 32px !important;
-    
-      }
-      .short-line::after {
+
+    }
+
+    .short-line::after {
         left: 30%;
+    }
+    .partner-left {
+      flex-direction: column;
+    
+    }
+    
+    .partner-right {
+  
+    flex-direction: column;
+    
+    }
+    .partner-image {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .partner-detail {
+        width: 100%;
+        padding: 5%;
+    
     }
 }
 
-@media (min-width:1081px) and (max-width:1199px){
+@media (min-width:1081px) and (max-width:1199px) {
     .animated-text {
         font-size: 36px;
     }
+
     .short-line {
         font-size: 28px !important;
         line-height: 65px !important;
