@@ -33,7 +33,7 @@ const PostPage = ({ params }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`https://www.asiandispatch.net/api/${slug}`);
+        const res = await fetch(`https://admin.asiandispatch.net/api/${slug}`);
         const data = await res.json();
         setPost(data.post);
         setKeywords(data.meta_keywords);
@@ -51,7 +51,7 @@ const PostPage = ({ params }) => {
   useEffect(() => {
     const fetchRole = async () => {
       try {
-        const response = await fetch('http:/factfirst/backend/asian/api/user', {
+        const response = await fetch('https://admin.asiandispatch.net/api/user', {
           credentials: 'include', // Important: This ensures cookies are sent
         });
 
