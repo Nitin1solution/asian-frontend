@@ -9,6 +9,7 @@ import "../../public/css/singlenew.css";
 import { Suspense } from "react";
 import Loading from "../loading";
 
+
 // Main PostPage component
 const PostPage = ({ params }) => {
   const slug = params.slug;
@@ -83,34 +84,26 @@ const PostPage = ({ params }) => {
     });
 
     // Initialize Swiper
-    // const swiper = new Swiper('.swiper-container', {
-    //   slidesPerView: 1,
-    //   spaceBetween: 10,
-    //   loop: true,
-    //   pagination: {
-    //     el: '.swiper-pagination',
-    //     clickable: true,
-    //   },
-    //   navigation: {
-    //     nextEl: '.swiper-button-next',
-    //     prevEl: '.swiper-button-prev',
-    //   },
-    //   autoplay: {
-    //     delay: 5000,
-    //     disableOnInteraction: false,
-    //   },
-    // });
+    const swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+    });
 
-    // Pause autoplay on hover
-    // const swiperContainer = document.querySelector('.swiper-container');
-    // swiperContainer.addEventListener('mouseenter', () => {
-    //   swiper.autoplay.stop();
-    // });
 
-    // // Resume autoplay when hover ends
-    // swiperContainer.addEventListener('mouseleave', () => {
-    //   swiper.autoplay.start();
-    // });
+ 
   }, [post]); // Dependencies array; this runs when `post` is fetched
 
   if (!post) {
@@ -268,11 +261,11 @@ const PostPage = ({ params }) => {
             </div>
             <div className="single-new-container">
               <div
-                className="content-container"
+                className="single-new-post-content" style={{ "--category-color": post.category.color }}
                 dangerouslySetInnerHTML={{ __html: post.post_content }}
               />
             </div>
-            <div className="tags">
+            <div className="tags" style={{ "--category-color": post.category.color }}>
               {post.tags &&
                 JSON.parse(post.tags).map((tag) => (
                   <Link

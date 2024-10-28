@@ -403,6 +403,6 @@
         const searchBox = document.querySelector('.main-header-search');
         searchBox.classList.toggle('active');
     });
-
+    
 
 })(jQuery);
