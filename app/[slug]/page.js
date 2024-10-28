@@ -152,11 +152,13 @@ const PostPage = ({ params }) => {
                       )}
                       {post.post_brand_image && (
                         <li className="h0">
-                          <img
-                            src={post.post_brand_image}
-                            className="brand_image"
-                            alt="Brand"
-                          />
+                          <div class="image-paragraph">
+                            <img
+                              src={post.post_brand_image}
+                              className="brand_image"
+                              alt="Brand"
+                            />
+                          </div>
                         </li>
                       )}
                     </ul>
