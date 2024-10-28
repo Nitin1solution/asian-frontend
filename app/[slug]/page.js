@@ -1,31 +1,23 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import '../../public/css/single.css';
-import { Suspense } from 'react';
-import Loading from '../loading';
-import useAdjustImg from '../../hooks/useAdjustImg';
-import Modal from '@/components/Modal';
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import "../../public/css/single.css";
+import "../../public/css/singlenew.css";
+import { Suspense } from "react";
+import Loading from "../loading";
 
-// function Loading() {
-//   return <div className="main-loader"><Image src={LoadImage} /></div>;
-// }
-
+// Main PostPage component
 const PostPage = ({ params }) => {
-
   const slug = params.slug;
   const [post, setPost] = useState(null);
-  const [keywords, setKeywords] = useState('');
+  const [keywords, setKeywords] = useState("");
   const [language, setLanguage] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [userRole, setUserRole] = useState('user');
+  // const [tags,setTags]=useState([]);
 
- 
-  
   const handleToggle = () => {
     setIsVisible(!isVisible);
   };
@@ -38,56 +30,97 @@ const PostPage = ({ params }) => {
         setPost(data.post);
         setKeywords(data.meta_keywords);
         setLanguage(data.languages || []);
+        // setTags(JSON.parse(data.tags));
+        // console.log(tags);
       } catch (error) {
-        console.error('Error fetching post:', error);
+        console.error("Error fetching post:", error);
       }
     };
 
     fetchData();
   }, [slug]);
 
-
-
   useEffect(() => {
-    const fetchRole = async () => {
-      try {
-        const response = await fetch('https://admin.asiandispatch.net/api/user', {
-          credentials: 'include', // Important: This ensures cookies are sent
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-          setUserRole(data.role);
-        } else {
-          console.error('Failed to fetch role');
-        }
-      } catch (error) {
-        console.error('Error fetching role:', error);
+    // Clean up empty paragraphs and headings
+    document.querySelectorAll(
+      'hr + p, p + hr, hr + h1, h1 + hr, hr + h2, h2 + hr, hr + h3, h3 + hr, hr + h4, h4 + hr, hr + h5, h5 + hr, hr + h6, h6 + hr'
+    ).forEach(pTag => {
+      if (pTag.innerHTML.trim() === '&nbsp;' || pTag.innerHTML.trim() === '&ensp;') {
+        pTag.remove();
       }
-    };
+    });
 
-    fetchRole();
-  });
+    // Toggle functionality for accordion
+    const toggleButtons = document.querySelectorAll('.toggle');
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
 
+        const $this = this;
+        const $icon = $this.querySelector('.toggle-icon');
+        const $answer = $this.nextElementSibling; // Assuming .inner is the next sibling
 
+        if ($answer.classList.contains('show')) {
+          $answer.style.display = 'none';
+          $answer.classList.remove('show');
+          $icon.textContent = '+';
+        } else {
+          // Close all other answers and reset icons
+          toggleButtons.forEach(btn => {
+            const icon = btn.querySelector('.toggle-icon');
+            const answer = btn.nextElementSibling;
+            answer.style.display = 'none';
+            answer.classList.remove('show');
+            icon.textContent = '+';
+          });
 
-  useAdjustImg(post, isModalOpen);
+          // Open this answer
+          $answer.style.display = 'block';
+          $answer.classList.add('show');
+          $icon.textContent = '-';
+        }
+      });
+    });
 
+    // Initialize Swiper
+    // const swiper = new Swiper('.swiper-container', {
+    //   slidesPerView: 1,
+    //   spaceBetween: 10,
+    //   loop: true,
+    //   pagination: {
+    //     el: '.swiper-pagination',
+    //     clickable: true,
+    //   },
+    //   navigation: {
+    //     nextEl: '.swiper-button-next',
+    //     prevEl: '.swiper-button-prev',
+    //   },
+    //   autoplay: {
+    //     delay: 5000,
+    //     disableOnInteraction: false,
+    //   },
+    // });
 
+    // Pause autoplay on hover
+    // const swiperContainer = document.querySelector('.swiper-container');
+    // swiperContainer.addEventListener('mouseenter', () => {
+    //   swiper.autoplay.stop();
+    // });
+
+    // // Resume autoplay when hover ends
+    // swiperContainer.addEventListener('mouseleave', () => {
+    //   swiper.autoplay.start();
+    // });
+  }, [post]); // Dependencies array; this runs when `post` is fetched
 
   if (!post) {
     return <Loading />;
   }
 
-  // useAdjustImg(post);
-
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
   return (
     <>
       <Head>
-        <title>{post.meta_title || 'Asian Dispatch'}</title>
+        <title>{post.meta_title || "Asian Dispatch"}</title>
         {post.meta_description && (
           <meta name="description" content={post.meta_description} />
         )}
@@ -99,172 +132,157 @@ const PostPage = ({ params }) => {
         {post.canonical && <link rel="canonical" href={post.canonical} />}
       </Head>
 
-      <section className="single-pageno-sidebar padding-bottom pt50">
+      <section className="single-page no-sidebar padding-bottom pt50">
         <Suspense fallback={<Loading />}>
-          <div
-            className="container"
-            id="container"
-            style={{ '--category-color': post.category.color }}
-          >
-            <div className="row">
-              <div className="col-lg-8 offset-lg-2">
-                <header className="entry-header">
-                  <h2 className="post-title-single">{post.post_title}</h2>
-                  <p className="short-description open-sans">{post.post_subtitle}</p>
-                  <ul className="single-category-section">
-                    <li>
-                      <ul className="dlex10">
-                        {post.category?.category && (
-                          <li className="h0">
-                            <Link
-                              href={`/category/${post.category.slug}`}
-                              className="tag-category-single hover-a-b-color"
-                            >
-                              {post.category.category}
-                            </Link>
-                          </li>
-                        )}
-                        {post.post_brand_image && (
-                          <li className="h0">
-                            <img
-                              src={post.post_brand_image}
-                              className="brand_image"
-                              alt="Brand"
-                            />
-                          </li>
-                        )}
-
-                      </ul>
-                    </li>
-                    <li className="social-share">
-                      <span className="open-sans">Share :</span>
-                      <Link
-                        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
-                          window.location.href
-                        )}&title=${encodeURIComponent(post.post_title)}`}
-                        target="_blank"
-                        className="tag-category-single hover-a-b-color"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="fa fa-linkedin"></i>
-                      </Link>
-                      <Link
-                        href={`https://twitter.com/share?url=${encodeURIComponent(
-                          window.location.href
-                        )}&text=${encodeURIComponent(post.post_title)}`}
-                        target="_blank"
-                        className="tag-category-single hover-a-b-color"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="bi bi-twitter-x"></i>
-                      </Link>
-                      <Link
-                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                          window.location.href
-                        )}`}
-                        target="_blank"
-                        className="tag-category-single hover-a-b-color"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="fa fa-facebook-f"></i>
-                      </Link>
-                      <Link
-                        href={`whatsapp://send?text=${encodeURIComponent(
-                          window.location.href
-                        )}`}
-                        target="_blank"
-                        className="tag-category-single hover-a-b-color"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="fa fa-whatsapp"></i>
-                      </Link>
-                    </li>
-                  </ul>
-                  <div className="top-author color-line-category">
-                    <div className="open-sans">
-                      {post.users.map((user, index) => (
-                        <Link
-                          key={user.id}
-                          href={`/author/${user.id}/${user.name}`}
-                        >
-                          {user.name}
-                          {index < post.users.length - 1 && ','}
-                        </Link>
-                      ))}
-                      {post.user_id_name && (
-                        <Link href="#" style={{ textTransform: 'capitalize' }}>
-                          {post.user_id_name}
-                        </Link>
+          <div className="parent-container" id="container">
+            <div
+              className="common-padding"
+              style={{ "--category-color": post.category.color }}
+            >
+              <header className="entry-header">
+                <h2 className="post-title-single">{post.post_title}</h2>
+                <p className="short-description open-sans">
+                  {post.post_subtitle}
+                </p>
+                <ul className="single-category-section">
+                  <li>
+                    <ul className="dlex10">
+                      {post.category?.category && (
+                        <li className="h0">
+                          <Link
+                            href={`/category/${post.category.slug}`}
+                            className="tag-category-single hover-a-b-color"
+                          >
+                            {post.category.category}
+                          </Link>
+                        </li>
                       )}
-                      &nbsp;|&nbsp;
-                      <span className="date-author">
-                        {new Date(post.created_at).toLocaleDateString('en-GB', {
-                          day: 'numeric',
-                          month: 'long',
-                          year: 'numeric',
-                        })}
-                      </span>
-                    </div>
-                    <div className="d-flex">
-
-                      {userRole === 'member' && (
-
-                        <button id="republish-btn" className="tag-category-single" onClick={openModal}>
-                          Republish
-                        </button>
+                      {post.post_brand_image && (
+                        <li className="h0">
+                          <img
+                            src={post.post_brand_image}
+                            className="brand_image"
+                            alt="Brand"
+                          />
+                        </li>
                       )}
-                      <Modal isOpen={isModalOpen} onClose={closeModal} />
-
-
-                      <div id="language" className="language tag-category-single">
-                        <div
-                          onClick={handleToggle}
-                          style={{ cursor: 'pointer' }}
-                        >
-                          {post.language}&nbsp;
-                          <i
-                            className="fa fa-chevron-circle-down"
-                            aria-hidden="true"
-                          ></i>
-                        </div>
-                        {isVisible && language.length > 1 && (
-                          <ul>
-                            {language.map((lang) =>
-                              lang.language !== post.language ? (
-                                <Link
-                                  key={lang.language}
-                                  href={`/${lang.post_slug}`}
-                                  passHref
-                                >
-                                  <li>{lang.language}</li>
-                                </Link>
-                              ) : null
-                            )}
-                          </ul>
-                        )}
-                      </div>
-                    </div>
+                    </ul>
+                  </li>
+                  <li className="social-share">
+                    <span className="open-sans">Share :</span>
+                    <Link
+                      href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+                        window.location.href
+                      )}&title=${encodeURIComponent(post.post_title)}`}
+                      target="_blank"
+                      className="tag-category-single hover-a-b-color"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa fa-linkedin"></i>
+                    </Link>
+                    <Link
+                      href={`https://twitter.com/share?url=${encodeURIComponent(
+                        window.location.href
+                      )}&text=${encodeURIComponent(post.post_title)}`}
+                      target="_blank"
+                      className="tag-category-single hover-a-b-color"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="bi bi-twitter-x"></i>
+                    </Link>
+                    <Link
+                      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                        window.location.href
+                      )}`}
+                      target="_blank"
+                      className="tag-category-single hover-a-b-color"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa fa-facebook-f"></i>
+                    </Link>
+                    <Link
+                      href={`whatsapp://send?text=${encodeURIComponent(
+                        window.location.href
+                      )}`}
+                      target="_blank"
+                      className="tag-category-single hover-a-b-color"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="fa fa-whatsapp"></i>
+                    </Link>
+                  </li>
+                </ul>
+                <div className="top-author color-line-category">
+                  <div className="open-sans">
+                    {post.users.map((user, index) => (
+                      <Link
+                        key={user.id}
+                        href={`/author/${user.id}/${user.name}`}
+                      >
+                        {user.name}
+                        {index < post.users.length - 1 && ","}
+                      </Link>
+                    ))}
+                    {post.user_id_name && (
+                      <Link href="#" style={{ textTransform: "capitalize" }}>
+                        {post.user_id_name}
+                      </Link>
+                    )}
+                    &nbsp;|&nbsp;
+                    <span className="date-author">
+                      {new Date(post.created_at).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </span>
                   </div>
-                </header>
-                <div className="single-container">
-                  <div
-                    className="single-post-content"
-                    dangerouslySetInnerHTML={{ __html: post.post_content }}
-                  />
-                  <div className="tags">
-                    {post.tags &&
-                      JSON.parse(post.tags).map((tag) => (
-                        <Link
-                          key={tag}
-                          href={`/tag/${tag}`}
-                          className="tag-category-single hover-a-b-color"
-                        >
-                          {tag}
-                        </Link>
-                      ))}
+                  <div className="d-flex">
+                    <div id="language" className="language tag-category-single">
+                      <div onClick={handleToggle} style={{ cursor: "pointer" }}>
+                        {post.language}&nbsp;
+                        <i
+                          className="fa fa-chevron-circle-down"
+                          aria-hidden="true"
+                        ></i>
+                      </div>
+                      {isVisible && language.length > 1 && (
+                        <ul>
+                          {language.map((lang) =>
+                            lang.language !== post.language ? (
+                              <Link
+                                key={lang.language}
+                                href={`/${lang.post_slug}`}
+                                passHref
+                              >
+                                <li>{lang.language}</li>
+                              </Link>
+                            ) : null
+                          )}
+                        </ul>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </header>
+            </div>
+            <div className="single-new-container">
+              <div
+                className="content-container"
+                dangerouslySetInnerHTML={{ __html: post.post_content }}
+              />
+            </div>
+            <div className="tags">
+              {post.tags &&
+                JSON.parse(post.tags).map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/tag/${tag}`}
+                    className="tag-category-single hover-a-b-color"
+                  >
+                    {tag}
+                  </Link>
+                ))}
             </div>
           </div>
           {post.disclaimer && (
@@ -298,13 +316,13 @@ const PostPage = ({ params }) => {
               </div>
             </div>
           )}
-
         </Suspense>
       </section>
     </>
   );
 };
 
+// Export the PostPage component dynamically with SSR disabled
 export default dynamic(() => Promise.resolve(PostPage), {
   ssr: false,
 });
