@@ -86,7 +86,7 @@ export default async function Footer() {
                     </div>
                     <div className="normal-divider open-sans"></div>
                     <div className="footer-last open-sans">
-                        <p>2024 Data Leads. All Rights Reserved</p>
+                        <p>2024 <Link href="https://dataleads.co.in/" target="_blank">DataLEADS.</Link> All Rights Reserved</p>
                     </div>
 
 
