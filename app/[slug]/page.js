@@ -303,7 +303,7 @@ const PostPage = ({ params }) => {
               <div class="disclaimer-container">
 
                 <p
-                  className="single-post-content"
+                  className="single-post-content" style={{ "--category-color": post.category.color }}
                   dangerouslySetInnerHTML={{ __html: post.disclaimer }}
                 />
               </div>
