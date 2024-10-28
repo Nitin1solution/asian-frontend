@@ -22,7 +22,7 @@ const OurTeam = () => {
 
         const fetchData = async () => {
             try {
-                const res = await fetch(`https://www.asiandispatch.net/api/our-team`);
+                const res = await fetch(`https://admin.asiandispatch.net/api/our-team`);
                 const data = await res.json();
                 setMembers(data.members || []);
                 setEditorials(data.editorial || []);
