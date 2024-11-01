@@ -118,6 +118,9 @@ export default function Header() {
                                                 <li className="bg-hover-black">
                                                     <Link href="/members" className="open-sans hover-a-color">Members</Link>
                                                 </li>
+                                                <li className="bg-hover-black">
+                                                    <Link href="/our-partners" className="open-sans hover-a-color">Partners</Link>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>

@@ -75,7 +75,7 @@ export default async function Footer() {
                     </div>
                     <div className="normal-divider"></div>
                     <div className="nav-links-1 col-12 ">
-                        <Link href="who-we-are" className=" border-right open-sans">About</Link>
+                        <Link href="who-we-are" className=" border-right open-sans">About Us</Link>
 
 
                         <Link href="press" className=" border-right open-sans">Press</Link>

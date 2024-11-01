@@ -98,7 +98,7 @@ const OurTeam = () => {
         <>
             <section className="container">
                 <div className="heading-div section-heading">
-                    <h2 className="short-line">Our Team</h2>
+                    <h2 className="short-line open-sans fboldi">Our Team</h2>
                 </div>
 
                 <div className="tab-section">
@@ -130,9 +130,9 @@ const OurTeam = () => {
                                     <Image src={l.image} alt="profile image" width={189.71} height={229.68} unoptimized />
                                 </div>
                                 <div className="person-info">
-                                    <h3>{l.name}</h3>
-                                    <p>{l.designation}</p>
-                                    <p>
+                                    <h3 className='helvetica'>{l.name}</h3>
+                                    <p  className='open-sans'>{l.designation}</p>
+                                    <p  className='open-sans'>
                                         <span className={`country ${l.country_name.toLowerCase().replace(' ', '-')}`} />
                                     </p>
                                     {l.email && (
@@ -156,9 +156,9 @@ const OurTeam = () => {
                                     <Image src={e.image} alt="profile image" width={189.71} height={229.68} unoptimized />
                                 </div>
                                 <div className="person-info">
-                                    <h3>{e.name}</h3>
-                                    <p>{e.designation}</p>
-                                    <p>
+                                    <h3 className='helvetica'>{e.name}</h3>
+                                    <p  className='open-sans'>{e.designation}</p>
+                                    <p  className='open-sans'>
                                         <span className={`country ${e.country_name.toLowerCase().replace(' ', '-')}`} />
                                     </p>
                                     {e.email && (
@@ -182,9 +182,9 @@ const OurTeam = () => {
                                     <Image src={m.image} alt="profile image" width={189.71} height={229.68} unoptimized />
                                 </div>
                                 <div className="person-info">
-                                    <h3>{m.name}</h3>
-                                    <p>{m.designation}</p>
-                                    <p>
+                                    <h3 className='helvetica'>{m.name}</h3>
+                                    <p className='open-sans'>{m.designation}</p>
+                                    <p className='open-sans'>
                                         <span className={`country ${m.country_name.toLowerCase().replace(' ', '-')}`} />
                                     </p>
                                     {m.email && (
@@ -208,9 +208,9 @@ const OurTeam = () => {
                                     <Image src={o.image} alt="profile image" width={189.71} height={229.68} unoptimized />
                                 </div>
                                 <div className="person-info">
-                                    <h3>{o.name}</h3>
-                                    <p>{o.designation}</p>
-                                    <p>
+                                    <h3 className='helvetica'>{o.name}</h3>
+                                    <p  className='open-sans'>{o.designation}</p>
+                                    <p  className='open-sans'>
                                         <span className={`country ${o.country_name.toLowerCase().replace(' ', '-')}`} />
                                     </p>
                                     {o.email && (

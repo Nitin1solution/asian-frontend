@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 
-const HoverSection = ({ post, users, category, boxid, id }) => {
+const HoverSection = ({ post, users, category, boxid, id ,date}) => {
   const sec_img = post.post_fr_img;
   const sec_title = post.post_title;
   const sec_cate = post.category.category;
@@ -14,7 +14,9 @@ const HoverSection = ({ post, users, category, boxid, id }) => {
       {index < users.length - 1 ? ', ' : ''}
     </span>
   ));
-  const sec_date = post.date;
+  const sec_date = date;
+
+ 
   const sec_url = `/${post.post_slug}`;
   const sec_cat_id = post.category.slug;
 
@@ -44,7 +46,7 @@ const HoverSection = ({ post, users, category, boxid, id }) => {
             </Link>
           </div>
           <div>
-            <span className="homepage-third-author">By {sec_author}</span>
+            <span className="homepage-third-author lora">By {sec_author}</span>
             <span style={{ marginLeft: '8px' }}>{sec_date}</span>
           </div>
           <div className="arrow">
@@ -121,6 +123,7 @@ const ThirdSection = ({ ads }) => {
           post={ad.post}
           users={ad.users}
           category={ad.post.category}
+          date={ad.date}
           boxid={`box${index + 1} box-${index + 1} hoversec${index + 1}`}
           id={`box${index + 1}`}
         />

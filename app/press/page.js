@@ -1,8 +1,8 @@
-import MainCard from '@/components/MainCard';
+
 import '../../public/css/aboutUs/press.css';
 import Loading from '../loading';
 import Link from 'next/link';
-
+import dynamic from 'next/dynamic';
 function formatDate(dateString) {
     const date = new Date(dateString);
     const options = { day: '2-digit', month: 'long', year: 'numeric' };
@@ -26,7 +26,7 @@ export async function getData() {
     }
 }
 
-export default async function Page() {
+ async function Page() {
 
     const post = await getData();
 
@@ -40,10 +40,10 @@ export default async function Page() {
             <section className="container">
 
                 <div className="heading-div section-heading">
-                    <h2 className="short-line">Press</h2>
+                    <h2 className="short-line open-sans fboldi">Press</h2>
                 </div>
                 <div className="sub-heading-press">
-                    <p>For press inquiries, contact us <strong> <Link href="mailto:hello@asiandispatch.net">hello@asiandispatch.net</Link></strong></p>
+                    <p className='helvetica'>For press inquiries, contact us <strong> <Link href="mailto:hello@asiandispatch.net">hello@asiandispatch.net</Link></strong></p>
                 </div>
                 <div className='articles'>
                     {post.data && post.data.length > 0 ? (
@@ -54,13 +54,13 @@ export default async function Page() {
                                     <img src={article.post_fr_img} className="press-thumbnail" alt={article.post_title} />
                                 </Link>
                                 <div className="press-title-body">
-                                    <span className="press-date lora">Published on {formatDate(article.created_at)}</span>
+                                    <span className="press-date open-sans lh32">Published on {formatDate(article.created_at)}</span>
                                     <Link href={`/press/${article.id}/${article.post_slug}`}>
-                                        <h2 className="open-sans ">{article.post_title}</h2>
+                                        <h2 className="open-sans fs24i fboldi">{article.post_title}</h2>
                                     </Link>
-                                    <Link href={`/press/${article.id}/${article.post_slug}`}>
+                                    <Link href={`/press/${article.id}/${article.post_slug}`} className='helvetica lh25i fs18i'>
                                         {/* {`${article.post_content.slice(0, 150)}...`} */}
-                                        <div className='subtitle'
+                                        <span style={{fontWeight:'500'}}
                                             dangerouslySetInnerHTML={{
                                                 __html: `${article.post_content.slice(0, 150)}...`
                                             }}
@@ -80,3 +80,4 @@ export default async function Page() {
         </>
     );
 }
+export default dynamic(() => Promise.resolve(Page), { ssr: false });

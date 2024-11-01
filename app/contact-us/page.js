@@ -64,7 +64,7 @@ export default function ContactUs() {
   return (
     <>
       <div className="heading-div section-heading">
-        <h2 className="short-line">Contact Us</h2>
+        <h2 className="short-line open-sans fboldi">Contact Us</h2>
       </div>
       
       <section className="pt50">
@@ -74,12 +74,12 @@ export default function ContactUs() {
               <div className="blog-list row gy-5">
                 <section className="container">
                   <div>
-                    <p>The Asian Dispatch HQ is currently based out of Delhi, India and we have members all across Asia. Email is the best way to reach us.</p>
-                    <p>We attempt to respond to all queries within a week. If the query is urgent kindly indicate [URGENT] in the subject line. To ensure a timely response, please send your email to the relevant address as listed below:</p>
+                    <p className='helvetica'>The Asian Dispatch HQ is currently based out of Delhi, India and we have members all across Asia. Email is the best way to reach us.</p>
+                    <p className='helvetica'>We attempt to respond to all queries within a week. If the query is urgent kindly indicate [URGENT] in the subject line. To ensure a timely response, please send your email to the relevant address as listed below:</p>
                   </div>
                   <div className="contact-grid">
                     <div className="box1">
-                      <h5>To enquire about membership at Asian Dispatch</h5>
+                      <h5 className='open-sans'>To enquire about membership at Asian Dispatch</h5>
                       <div className="contact_inner_box">
                         <Image src={Icon} alt="Email Icon" width={24} height={24} unoptimized/>
                         <div>
@@ -89,7 +89,7 @@ export default function ContactUs() {
                       </div>
                     </div>
                     <div className="box2">
-                      <h5>If you are interested in partnering with us,</h5>
+                      <h5 className='open-sans'>If you are interested in partnering with us,</h5>
                       <div className="contact_inner_box">
                         <Image src={Icon} alt="Email Icon" width={24} height={24} unoptimized/>
                         <div>
@@ -99,7 +99,7 @@ export default function ContactUs() {
                       </div>
                     </div>
                     <div className="box3">
-                      <h5>For all other queries, email </h5>
+                      <h5 className='open-sans'>For all other queries, email </h5>
                       <div className="contact_inner_box">
                         <Image src={Icon} alt="Email Icon" width={24} height={24} unoptimized />
                         <div>

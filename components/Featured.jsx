@@ -53,7 +53,7 @@ export default async function Featured() {
               <h1 className="line-effect">
                 {(post_1.post.post_title || "").split(" ").slice(0, 15).join(" ")}
               </h1>
-              <p>{(post_1.post.post_subtitle || "").split(" ").slice(0, 40).join(" ")}</p>
+              <p className="open-sans fs-18">{(post_1.post.post_subtitle || "").split(" ").slice(0, 40).join(" ")}</p>
               <h6 className="mt10">
                 {post_1.users && post_1.users.map((user, index) => (
                   <span key={user.id}>

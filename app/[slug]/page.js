@@ -102,9 +102,14 @@ const PostPage = ({ params }) => {
       },
     });
 
-
+    const links = document.querySelectorAll('.single-new-post-content a');
+    links.forEach((link) => {
+      link.setAttribute('target', '_blank');
+    });
  
-  }, [post]); // Dependencies array; this runs when `post` is fetched
+  }, [post]);
+   
+  
 
   if (!post) {
     return <Loading />;

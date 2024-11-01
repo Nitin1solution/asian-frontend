@@ -34,7 +34,7 @@ async function page() {
      <section className="container">
         <div className="heading-div section-heading">
 
-            <h2 className="short-line">{posts.post_title}</h2>
+            <h2 className="short-line open-sans fboldi">{posts.post_title}</h2>
         </div>
         <div className="content" dangerouslySetInnerHTML={{ __html: posts.post_content }}>
          
