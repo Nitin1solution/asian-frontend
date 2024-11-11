@@ -24,12 +24,21 @@ async function getData() {
 }
 
 function PartnersSection({ data }) {
+
+
+  useEffect(() => {
+   
+      document.title =  "Our Partners";
+
+    
+    
+  }, []);
   return (
     <section className="container">
       <div className="member">
         <div className="left-member">
           <div className="heading-div section-heading">
-            <h2 className="short-line">
+            <h2 className="short-line short-line-left">
               Our Partners
             </h2>
           </div>
@@ -44,7 +53,7 @@ function PartnersSection({ data }) {
       {data.map((item, index) => (
         <div
           key={item.id}
-          className={index % 2 === 0 ? 'partner-left' : 'partner-right'}
+          className={index % 2 === 0 ? 'partner-right' : 'partner-left'}
         >
           <div className="partner-image">
             <Image src={item.image} alt="Partner" width={300} height={150} unoptimized/>

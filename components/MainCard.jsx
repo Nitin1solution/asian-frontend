@@ -30,13 +30,13 @@ const MainCard = ({ post, users, date }) => {
                     <li>
                         <div className="text-category" style={{ display: 'flex' }}>
                             {users.map((user, index) => (
-                                <Link key={user.id} href={`/author/${user.id}/${user.name}`} className="text-category "style={{ margin: '0px 5px 0px 0px' }}>
+                                <Link key={user.id} href={`/author/${user.id}/${user.name.toLowerCase().replace(/\s+/g, '-')}`}className="text-category "style={{ margin: '0px 5px 0px 0px' }}>
                                         {user.name}{index !== users.length - 1 ? ', ' : ''}
                              
                                 </Link>
                             ))}
                         </div>
-                        <span className="font-date">{date}</span>
+                        <span className="font-date helvetica">{date}</span>
                     </li>
                 </ul>
             </div>

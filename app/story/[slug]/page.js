@@ -1,6 +1,6 @@
 
 import { Suspense } from "react";
-import Loading from "../loading";
+import Loading from "../../loading";
 
 import dynamic from "next/dynamic";
 import SinglePost from "@/components/SinglePost";

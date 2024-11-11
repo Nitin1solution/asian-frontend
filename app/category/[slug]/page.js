@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
     }
 
     const category = data.category;
-
+// console.log(category);
     return {
         title: `${category.category}`, 
         description: category.description, 
@@ -108,12 +108,10 @@ async function CategoryPage({ params }) {
                                                     <p className="open-sans">{result}</p>
                                                     <ul className="post-card-footer">
                                                         <li>
-                                                            <Link href={`/category/${post.category.slug}`} style={{ textDecoration: 'none' }}>
-                                                                <h6 className="tag-category-single">{post.category.category}</h6>
-                                                                <br />
+                                                           
                                                                 {post.users.map((user, index) => (
                                                                     <span key={user.id}>
-                                                                        <Link href={`/author/${user.id}/${encodeURIComponent(user.name)}`}>
+                                                                        <Link href={`/author/${user.id}/${user.name.toLowerCase().replace(/\s+/g, '-')}`} className='fs15'>
                                                                             {user.name}
                                                                         </Link>
                                                                         {index < post.users.length - 1 ? ', ' : ''}
@@ -123,7 +121,7 @@ async function CategoryPage({ params }) {
                                                                 <span className="font-date">
                                                                     {new Date(post.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}
                                                                 </span>
-                                                            </Link>
+                                                          
                                                         </li>
                                                     </ul>
                                                 </div>

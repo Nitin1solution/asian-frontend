@@ -110,7 +110,7 @@
   .single-new-post-content p {
     font-family: var(--dl-short-description);
     font-size: 18px !important;
-    color: var(--dl-heading-color);
+    /* color: var(--dl-heading-color); */
     margin-bottom: 0;
   
     /* display: flex; */
@@ -179,11 +179,12 @@
     color: white;
     font-family: "Quicksand", sans-serif;
     font-size: 14px!important;
-    font-weight: 600;
+    font-weight: 600 !important;
     text-align: left;
     font-style: italic;
     line-height: 18px;
-    padding: 5px;
+    padding: 10px;
+    padding-top: 10px !important;
 }
 
 .image_wrapper:hover .caption {
@@ -372,3 +373,9 @@
 }
 
 
+@media (max-width:450px){
+    .image_section2,
+.image_section3 {
+  flex-direction: column;
+}
+}

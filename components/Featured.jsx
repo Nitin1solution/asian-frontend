@@ -45,6 +45,7 @@ export default async function Featured() {
         className="banner-new"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url(${post_1.post.post_fr_img || ""})`,
+          backgroundColor: `#000`,
         }}
       >
         <div className="container">
@@ -57,7 +58,7 @@ export default async function Featured() {
               <h6 className="mt10">
                 {post_1.users && post_1.users.map((user, index) => (
                   <span key={user.id}>
-                    <Link href={`/author/${user.id}/${user.name}`} className="author-dark">
+                    <Link href={`/author/${user.id}/${user.name.toLowerCase().replace(/\s+/g, '-')}`} className="author-dark">
                       {user.name}
                     </Link>
                     {index < post_1.users.length - 1 ? ", " : ""}

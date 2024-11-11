@@ -22,7 +22,7 @@ const page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`https://www.asiandispatch.net/api/press/${id}/${slug}`);
+        const res = await fetch(`https://admin.asiandispatch.net/api/press/${id}/${slug}`);
         const data = await res.json();
         setPost(data.post);
         setKeywords(data.meta_keywords);
@@ -35,6 +35,60 @@ const page = () => {
     fetchData();
   }, [slug]);
 
+  useEffect(() => {
+    if (post) {
+      document.title = post.meta_title || post.post_title;
+
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute("content", post.meta_description || "");
+      } else {
+        const newMetaDescription = document.createElement('meta');
+        newMetaDescription.name = "description";
+        newMetaDescription.content = post.meta_description || "";
+        document.head.appendChild(newMetaDescription);
+      }
+
+      if (keywords) {
+        let metaKeywords = document.querySelector('meta[name="keywords"]');
+        if (metaKeywords) {
+          metaKeywords.setAttribute("content", keywords);
+        } else {
+          const newMetaKeywords = document.createElement('meta');
+          newMetaKeywords.name = "keywords";
+          newMetaKeywords.content = keywords;
+          document.head.appendChild(newMetaKeywords);
+        }
+      }
+
+      const ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      ogTitle.content = post.post_title;
+      document.head.appendChild(ogTitle);
+
+      const ogDescription = document.createElement('meta');
+      ogDescription.setAttribute('property', 'og:description');
+      ogDescription.content = post.post_subtitle;
+      document.head.appendChild(ogDescription);
+
+      const ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      ogImage.content = post.post_fr_img;
+      document.head.appendChild(ogImage);
+
+      if (post.canonical) {
+        let canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (!canonicalLink) {
+          canonicalLink = document.createElement('link');
+          canonicalLink.rel = "canonical";
+          canonicalLink.href = post.canonical;
+          document.head.appendChild(canonicalLink);
+        } else {
+          canonicalLink.setAttribute('href', post.canonical);
+        }
+      }
+    }
+  }, [post]);
 
   useAdjustImg(post);
   if (!post) {

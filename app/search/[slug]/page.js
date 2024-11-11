@@ -28,13 +28,15 @@ export async function getData(slug) {
 }
 
 export default async function Page({ params }) {
-    const slug = params?.slug;
-    console.log(slug);
+    let slug = params?.slug;
 
     // If slug is not defined, handle the case
     if (!slug) {
         return <div>Invalid tag.</div>;
     }
+
+    // Decode the slug to handle spaces properly
+    slug = decodeURIComponent(slug);
 
     const data = await getData(slug);
 
@@ -43,7 +45,6 @@ export default async function Page({ params }) {
     }
 
     const { count, posts, tag } = data; // Extracting data from the API response
-    // console.log(posts);
 
     // Ensure 'posts' is an array or convert it into an array
     const postsArray = Array.isArray(posts) ? posts : Object.values(posts);

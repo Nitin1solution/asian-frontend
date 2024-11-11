@@ -114,6 +114,13 @@ async function getData() {
                         </div>
                     </div>
                 </div>
+                <div className='map-container'>
+                    <div className='map-image'>
+                        <Image src='images/member/asian_dispatch_map.gif' alt='Asia Dispatch Members Map' width={1920} height={1080} unoptimized/>
+                    </div>
+                  
+                </div>
+             
             </section>
         </>
     );

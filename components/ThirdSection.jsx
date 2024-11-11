@@ -8,7 +8,7 @@ const HoverSection = ({ post, users, category, boxid, id ,date}) => {
   const sec_cate = post.category.category;
   const sec_author = users.map((u, index) => (
     <span key={u.id}>
-      <Link href={`/author/${u.id}`} style={{ color: 'white' }}>
+      <Link href={`/author/${u.id}/${u.name.toLowerCase().replace(/\s+/g, '-')}`} style={{ color: 'white' }}>
         {u.name}
       </Link>
       {index < users.length - 1 ? ', ' : ''}

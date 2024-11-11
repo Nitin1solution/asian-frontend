@@ -1404,7 +1404,7 @@ background-color: black !important;
 .main-header-wapper .nav-menu > li > a span {
     white-space: pre;
     display: inline-block;
-   
+   color:white;
     opacity: 0;
     -webkit-transform: translate3d(0, -10px, 0);
     transform: translate3d(0, -10px, 0);
@@ -4724,4 +4724,18 @@ body.modal-open{
 }
 .fs18i{
     font-size: 18px !important;
+}
+
+
+
+
+@media (min-width: 500px) and (max-width: 1080px) {
+    .p50-t {
+        padding: 50px;
+    }
+}
+@media (max-width: 500px) {
+    .main-header-wapper .site-logo {
+        max-width: 200px;
+    }
 }

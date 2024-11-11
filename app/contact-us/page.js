@@ -83,7 +83,7 @@ export default function ContactUs() {
                       <div className="contact_inner_box">
                         <Image src={Icon} alt="Email Icon" width={24} height={24} unoptimized/>
                         <div>
-                          <h6>Reach out to</h6>
+                          <h6 class="open-sans">Reach out to</h6>
                           <h6><a href="mailto:memberships@asiandispatch.net">memberships@asiandispatch.net</a></h6>
                         </div>
                       </div>
@@ -93,7 +93,7 @@ export default function ContactUs() {
                       <div className="contact_inner_box">
                         <Image src={Icon} alt="Email Icon" width={24} height={24} unoptimized/>
                         <div>
-                          <h6>Email us at</h6>
+                          <h6 class="open-sans">Email us at</h6>
                           <h6><a href="mailto:partnerships@asiandispatch.net">partnerships@asiandispatch.net</a></h6>
                         </div>
                       </div>
@@ -103,7 +103,7 @@ export default function ContactUs() {
                       <div className="contact_inner_box">
                         <Image src={Icon} alt="Email Icon" width={24} height={24} unoptimized />
                         <div>
-                          <h6>Reach out to</h6>
+                          <h6 class="open-sans">Reach out to</h6>
                           <h6><a href="mailto:hello@asiandispatch.net">hello@asiandispatch.net</a></h6>
                         </div>
                       </div>
@@ -127,7 +127,7 @@ export default function ContactUs() {
                           <div className={`number number-${num + 1}`} key={num}>{num + 1}</div>
                         ))}
                       </div>
-                      <div className="timezone-label">
+                      <div className="timezone-label helvetica">
                         <div className="digital-clock" id={`digital-clock-${tz}`}></div>, {tz.toUpperCase()}
                       </div>
                     </div>

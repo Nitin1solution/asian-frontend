@@ -41,7 +41,7 @@ const OurTeam = () => {
 
         const updateTime = async (countryName) => {
             try {
-                const response = await fetch(`https://www.asiandispatch.net/api/team/${countryName}`);
+                const response = await fetch(`https://admin.asiandispatch.net/api/team/${countryName}`);
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
 
@@ -104,19 +104,19 @@ const OurTeam = () => {
                 <div className="tab-section">
                     <div className="tab">
                         <button
-                            className="tablinks active"
+                            className="tablinks open-sans active"
                             onClick={(e) => openCity(e, 'Leadership')}
                             id="defaultOpen"
                         >
                             Leadership
                         </button>
-                        <button className="tablinks" onClick={(e) => openCity(e, 'Editorial')}>
+                        <button className="tablinks open-sans" onClick={(e) => openCity(e, 'Editorial')}>
                             Editorial & Partnership
                         </button>
-                        <button className="tablinks" onClick={(e) => openCity(e, 'Members')}>
+                        <button className="tablinks open-sans" onClick={(e) => openCity(e, 'Members')}>
                             Members
                         </button>
-                        <button className="tablinks" onClick={(e) => openCity(e, 'Operations')}>
+                        <button className="tablinks open-sans" onClick={(e) => openCity(e, 'Operations')}>
                             Operations & Video
                         </button>
                     </div>

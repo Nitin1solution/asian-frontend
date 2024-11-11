@@ -678,7 +678,6 @@ margin-top: 5px ;
         padding-bottom: 10px;
         background-size: contain;
         background-repeat: no-repeat;
-
     }
     .maindiv {
         padding-top: 80%;
@@ -719,6 +718,7 @@ margin-top: 5px ;
     .partners {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
     }
 
 }
@@ -728,4 +728,12 @@ margin-top: 5px ;
 }
 .fw-6{
     font-weight: 600!important;
+}
+
+
+
+@media (max-width: 450px) {
+    .pmy50 {
+        padding: 30px 0px;
+    }
 }

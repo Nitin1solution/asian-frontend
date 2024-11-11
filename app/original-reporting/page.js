@@ -53,7 +53,7 @@ export  function generateMetadata() {
                 <div className="container">
                     <div className="row gy-5 gy-lg-0 main-area">
                         <div className="col-lg-12">
-                            <div className="blog-list row gy-5 ">
+                            <div className="">
                                 <div className="blog-list row gy-5">
                                     {posts.map((post) => {
                                         // Truncate subtitle if it's too long
@@ -104,7 +104,7 @@ export  function generateMetadata() {
                                                                     <br/>
                                                                     {post.users.map((user, index) => (
                                                                         <span key={user.id}>
-                                                                            <Link href={`/author/${user.id}/${encodeURIComponent(user.name)}`}>
+                                                                            <Link href={`/author/${user.id}/${user.name.toLowerCase().replace(/\s+/g, '-')}`}>
 
                                                                                 {user.name}
 

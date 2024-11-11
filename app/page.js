@@ -18,7 +18,7 @@ import Loading from "./loading";
    </Suspense>
    <MemberDispatch/>
    <HoverSection/>
-   <section className="about-section pt100">
+   <section className="about-section pt100 pmt50">
         <div className="container">
             <div className="row">
                 <div className="col-lg-6 col-md-6 col-sm-12">

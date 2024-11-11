@@ -15,7 +15,7 @@ a:hover{
     color: var(--category-color)!important;
 }
 
-.bg-hover-black a:hover{
+.bg-hover-black>a:hover{
     color: white!important;
 }
 .single-category-section a {
@@ -45,13 +45,21 @@ a:hover{
 .lora{
     font-family: "Lora", serif!important;
 }
-
+@media (max-width: 850px){
+    .bg-hover-black .hover-a-color:hover{
+        color: rgb(4, 4, 4)!important;
+    }
+    .bg-hover-black a:hover {
+        color: rgb(0, 0, 0) !important;
+    }
+}
 .hover-a-color:hover{
-    color: white!important;
+    color: rgb(0, 0, 0)!important;
 }
 .hover-a-b-color:hover{
     color: black!important;
 }
+
 
 .main-header-search {
     max-height: 0;
@@ -66,4 +74,35 @@ a:hover{
 }
 .maindiv h1{
     width: 85%!important;
+}
+
+.hoversec {
+    background-size: cover;
+}
+
+.single-new-post-content p{
+    font-weight: 500;
+}
+
+.fs15{
+    font-size: 15px;
+}
+
+.category-card li a:hover{
+color: black!important;
+}
+
+.hover-cat-color:hover{
+    color: rgb(255, 255, 255)!important;
+}
+.sidebar-widget .author-widget .author-thumb {
+   
+    border-radius: 0%!important;
+}
+
+@media (max-width: 450px) {
+    .short-line {
+        text-align: center!important;
+       
+    }
 }

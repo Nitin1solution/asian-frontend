@@ -39,9 +39,9 @@ export default async function Page({ params }) {
             <section className="section-search">
                 <div className="container">
                     <h2 className="search-heading">
-                        Tag results for: {slug.charAt(0).toUpperCase() + slug.slice(1)}
+                        Tag results for : {decodeURIComponent(slug.charAt(0).toUpperCase() + slug.slice(1))}
                     </h2>
-                    <h3>Total results: {count}</h3>
+                    <h3>Total results : {count}</h3>
 
                     <div className="row search-card">
                         {posts && posts.length > 0 ? (

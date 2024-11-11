@@ -5,7 +5,7 @@ export  function generateMetadata() {
 
 
     return {
-        title: 'Who We Are', // Dynamic title based on category name
+        title: 'Who We Are', 
         
     };
 }
@@ -29,8 +29,8 @@ export  function generateMetadata() {
             newsrooms and journalists across borders. </p>
         <div className="mission-card">
             <div className="left">
-                <h5>Our Mission </h5>
-                <h2 className="mission-heading">
+                <h5 class="open-sans">Our Mission </h5>
+                <h2 className="mission-heading open-sans">
                     Unveiling Asia One<br/> Story At A Time
                 </h2>
 

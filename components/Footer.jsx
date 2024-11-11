@@ -75,18 +75,18 @@ export default async function Footer() {
                     </div>
                     <div className="normal-divider"></div>
                     <div className="nav-links-1 col-12 ">
-                        <Link href="who-we-are" className=" border-right open-sans">About Us</Link>
+                        <Link href="/who-we-are" className=" border-right open-sans">About Us</Link>
 
 
-                        <Link href="press" className=" border-right open-sans">Press</Link>
+                        <Link href="/press" className=" border-right open-sans">Press</Link>
 
-                        <Link href="members" className=" border-right open-sans">Members</Link>
+                        <Link href="/members" className=" border-right open-sans">Members</Link>
 
-                        <Link href="contact-us" className="open-sans">Contact Us</Link>
+                        <Link href="/contact-us" className="open-sans">Contact Us</Link>
                     </div>
                     <div className="normal-divider open-sans"></div>
                     <div className="footer-last open-sans">
-                        <p>2024 <Link href="https://dataleads.co.in/" target="_blank">DataLEADS.</Link> All Rights Reserved</p>
+                        <p>2024 <Link href="https://dataleads.co.in/" target="_blank" className="open-sans">DataLEADS.</Link> All Rights Reserved</p>
                     </div>
 
 

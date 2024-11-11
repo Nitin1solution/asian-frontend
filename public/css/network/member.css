@@ -118,16 +118,35 @@
 
 }
 
-.partner-image {
+/* .partner-image {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+} */
+
+.partner-left .partner-image {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.partner-right .partner-image {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.partner-image img {
+    width: auto !important;
+    height: auto !important;
 }
 
 .partner-detail {
     width: 50%;
-    padding: 5%;
+    padding: 5% 0%;
 
 }
 
@@ -167,11 +186,16 @@
     background: rgb(9, 9, 9);
     width: 100px;
     position: absolute;
-
     bottom: -35px;
     left: 47%;
 }
 
+.short-line-left {
+    text-align: left;
+}
+.short-line-left::after {
+    left: 1%;
+}
 
 
 /* .box-with-text {
@@ -212,7 +236,7 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     column-gap: 75px;
     row-gap: 40px;
 }
@@ -317,8 +341,7 @@ figure {
 
 @media (max-width:450px) {
     .partners-logos {
-
-        grid-template-columns: repeat(2, 1fr) !important;
+        justify-content: center;
 
     }
 
@@ -333,6 +356,7 @@ figure {
 
     .member {
         flex-direction: column;
+        gap: 0;
     }
 
     .member .left-member,
@@ -350,27 +374,29 @@ figure {
     .short-line::after {
         left: 30%;
     }
+
     .partner-left {
-      flex-direction: column;
-    
+        flex-direction: column;
+
     }
-    
+
     .partner-right {
-  
-    flex-direction: column;
-    
+
+        flex-direction: column;
+
     }
+
     .partner-image {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    
+
     .partner-detail {
         width: 100%;
-        padding: 5%;
-    
+        padding: 5% 0%;
+
     }
 }
 
@@ -383,4 +409,17 @@ figure {
         font-size: 28px !important;
         line-height: 65px !important;
     }
+}
+
+
+.map-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.map-image img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+
 }

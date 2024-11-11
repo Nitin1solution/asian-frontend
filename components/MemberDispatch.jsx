@@ -49,7 +49,7 @@ export default async function MemberDispatch() {
                         {/* member 1  */}
                       
                         <article className={`post-layout-item img-hover-move  color-category`} style={{ '--category-color': post_1.post.category.color }}>
-                            <Link href={`/post/${post_1.post.id}/${post_1.post.post_id}/${post_1.post.post_slug}`}  className="post-thumb media">
+                            <Link href={`/${post_1.post.post_slug}`}  className="post-thumb media">
                                     <Image
                                         src={post_1.post.post_fr_img}
                                         alt="thumb"
@@ -72,14 +72,11 @@ export default async function MemberDispatch() {
                                         </li>
                                     </ul>
                                 </h3>
-                                <p className="mt-20">
-                                    {post_1.post.post_subtitle.split(' ').slice(0, 40).join(' ')}
-                                </p>
                                 <ul className="author-info-name ">
                                     <li>
                                         <div className="text-category" style={{ display: 'flex' }}>
                                             {post_1.users.map((user, index) => (
-                                                <Link key={user.id} href={`/author/${user.id}/${user.name}`}
+                                                <Link key={user.id} href={`/author/${user.id}/${user.name.toLowerCase().replace(/\s+/g, '-')}`}
                                                         className="text-category"
                                                         style={{ margin: '0px 5px 0px 0px' }}
                                                     >
@@ -89,11 +86,15 @@ export default async function MemberDispatch() {
                                                 </Link>
                                             ))}
                                         </div>
-                                        <span className="font-date">
+                                        <span className="font-date helvetica fw500">
                                            {post_1.date}
                                         </span>
                                     </li>
                                 </ul>
+                                <p className="open-sans fs-18">
+                                    {post_1.post.post_subtitle.split(' ').slice(0, 40).join(' ')}
+                                </p>
+                                
                             </div>
                         </article>
 

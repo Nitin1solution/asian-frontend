@@ -100,6 +100,9 @@
 }
 
 
+
+
+
 @media (max-width:1080px){
 
     .tablinks {
@@ -140,11 +143,10 @@
         margin: 10px 0px;
     }
     .short-line {
-    
-       
-        font-size: 32px!important;
-     
-    
+        font-size: 32px !important;
     }
+    .person-img img {
+        width: auto !important;
+    }    
 
 }

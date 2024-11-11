@@ -8,7 +8,13 @@ function formatDate(dateString) {
     const options = { day: '2-digit', month: 'long', year: 'numeric' };
     return date.toLocaleDateString('en-GB', options);
 }
-
+export async function generateMetadata() {
+   
+    return {
+        title: "Press", 
+      
+    };
+}
 export async function getData() {
     try {
         const res = await fetch(`https://admin.asiandispatch.net/api/press`, {
@@ -43,7 +49,7 @@ export async function getData() {
                     <h2 className="short-line open-sans fboldi">Press</h2>
                 </div>
                 <div className="sub-heading-press">
-                    <p className='helvetica'>For press inquiries, contact us <strong> <Link href="mailto:hello@asiandispatch.net">hello@asiandispatch.net</Link></strong></p>
+                    <p className='helvetica'>For press inquiries, contact us <strong> <Link href="mailto:hello@asiandispatch.net" class="open-sans fboldi">hello@asiandispatch.net</Link></strong></p>
                 </div>
                 <div className='articles'>
                     {post.data && post.data.length > 0 ? (
@@ -67,7 +73,7 @@ export async function getData() {
                                         />
                                     </Link>
                                     <p>
-                                        <Link href={`/press/${article.id}/${article.post_slug}`} className="read-article">Read More</Link>
+                                        <Link href={`/press/${article.id}/${article.post_slug}`} className="read-article hover-cat-color">Read More</Link>
                                     </p>
                                 </div>
                             </div>
