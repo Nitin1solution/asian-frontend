@@ -147,7 +147,7 @@ const SinglePost = ({ post_slug }) => {
         // Set padding-top of .pt50 to 0px
         const pt50Element = document.querySelector(".pt50");
         if (pt50Element) {
-          pt50Element.style.paddingTop = "0px";
+          pt50Element.style.paddingTop = "0px!important";
         }
 
         // Set display to none for .entry_header, .tags, and .disclaimer
