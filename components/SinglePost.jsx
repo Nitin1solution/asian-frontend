@@ -162,9 +162,6 @@ const SinglePost = ({ post_slug }) => {
     }
   }, [post]);
 
-
-  
-
   if (!post) {
     return <Loading />;
   }
@@ -233,6 +230,7 @@ const SinglePost = ({ post_slug }) => {
                         >
                           <i className="bi bi-twitter-x"></i>
                         </Link>
+                        
                         <Link
                           href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                             currentUrl
@@ -243,8 +241,9 @@ const SinglePost = ({ post_slug }) => {
                         >
                           <i className="fa fa-facebook-f"></i>
                         </Link>
+                       
                         <Link
-                          href={`whatsapp://send?text=${encodeURIComponent(
+                          href={`https://wa.me/?text=${encodeURIComponent(
                             currentUrl
                           )}`}
                           target="_blank"
