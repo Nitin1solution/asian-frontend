@@ -48,16 +48,13 @@ export async function generateMetadata({ params }) {
   }
 }
 
-let isVisible = false;
+
 
 async function page({ params }) {
   const slug = params.slug;
-  // console.log(slug);
-  const data = await getData(slug);
-  const post = data.post || [];
-  const categoryColor = data?.post?.category?.color;
-  const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${slug}`;
-  const language = data.language;
+
+
+
 
 
   return (
