@@ -33,7 +33,7 @@ export default async function MemberDispatch() {
     return (
         <>
             <div class="post-layout bg-light-red padding-bottom">
-                <div class="section-heading text-center p50">
+                <div class="section-heading text-center p50 ptb-50">
                     <h2>MEMBERS' DISPATCH</h2>
                 </div>
                 <div class="container ">
@@ -63,7 +63,7 @@ export default async function MemberDispatch() {
                             </Link>
                             <div className="post-content">
                                 <h3>
-                                    <Link href={`/${post_1.post.post_slug}`}  className={`text-hover-category prata fw-6`} >{post_1.post.post_title}
+                                    <Link href={`/${post_1.post.post_slug}`}  className={`text-hover-category prata fw-6 fs-20`} >{post_1.post.post_title}
                                     </Link>
                                     <ul className="post-meta">
                                         <li>
@@ -91,7 +91,7 @@ export default async function MemberDispatch() {
                                         </span>
                                     </li>
                                 </ul>
-                                <p className="open-sans fs-18">
+                                <p className="open-sans ">
                                     {post_1.post.post_subtitle.split(' ').slice(0, 40).join(' ')}
                                 </p>
                                 

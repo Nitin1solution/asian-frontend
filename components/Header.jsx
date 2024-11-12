@@ -58,7 +58,8 @@ export default function Header() {
                     height={30}
                     unoptimized
                     priority
-                    style={{ width: "250px", height: "30px" }}
+                 
+                    className="main-site-logo-new"
                   />
                 </Link>
               </div>

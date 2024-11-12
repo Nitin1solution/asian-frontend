@@ -25,7 +25,7 @@ const HoverSection = ({ post, users, category, boxid, id ,date}) => {
       className={`hoversec ${boxid}`}
       id={id}
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url(${sec_img})`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0 0 0 / 30%) 100%), url(${sec_img})`,
       }}
     >
       <Link
@@ -88,7 +88,7 @@ const ThirdSection = ({ ads }) => {
         ads.forEach((ad, i) => {
           const box = document.getElementById(`box${i + 1}`);
           if (box) {
-            box.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%), url(${ad.post.post_fr_img})`;
+            box.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0 0 0 / 30%) 100%), url(${ad.post.post_fr_img})`;
           }
         });
       };

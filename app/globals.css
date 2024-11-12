@@ -15,6 +15,10 @@ a:hover{
     color: var(--category-color)!important;
 }
 
+.main-site-logo-new{
+    width: 250px;
+     height: 30px;
+}
 .bg-hover-black>a:hover{
     color: white!important;
 }
@@ -105,4 +109,17 @@ color: black!important;
         text-align: center!important;
        
     }
+    .ptb-50{
+        padding: 50px 0px;
+    }
+    .main-site-logo-new{
+     
+         height: 25px!important;
+    }
 }
+
+.fs-20 {
+    font-size: 20px!important;
+    font-weight: 600!important;
+}
+

@@ -236,12 +236,18 @@
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     column-gap: 75px;
     row-gap: 40px;
 }
+.our-partner-container{
+    margin: 50px auto;
 
-
+}
+.partner-detail a{
+    color: blue;
+    text-decoration: underline;
+}
 .partners-logos img {
     height: 135px;
 }

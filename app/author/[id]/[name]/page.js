@@ -72,7 +72,7 @@ const Page = () => {
                                                     </li>
                                                 </ul>
                                                 <h3>
-                                                    <Link href={`/${p.post_slug}`} className="text-hover-category prata">
+                                                    <Link href={`/${p.post_slug}`} className="text-hover-category prata fs-20">
                                                         {p.post_title.split(' ').slice(0, 10).join(' ')}
                                                     </Link>
                                                 </h3>

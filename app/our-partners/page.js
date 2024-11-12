@@ -34,7 +34,7 @@ function PartnersSection({ data }) {
     
   }, []);
   return (
-    <section className="container">
+    <section className="container our-partner-container">
       <div className="member">
         <div className="left-member">
           <div className="heading-div section-heading">
