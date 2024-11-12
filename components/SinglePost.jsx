@@ -147,7 +147,7 @@ const SinglePost = ({ post_slug }) => {
         // Set padding-top of .pt50 to 0px
         const pt50Element = document.querySelector(".pt50");
         if (pt50Element) {
-          pt50Element.style.paddingTop = "0px!important";
+          pt50Element.style.paddingTop = "0px";
         }
 
         // Set display to none for .entry_header, .tags, and .disclaimer
@@ -171,14 +171,14 @@ const SinglePost = ({ post_slug }) => {
 
   return (
     <>
-      <section className="single-page no-sidebar padding-bottom pt50">
+      <section className="single-page no-sidebar padding-bottom ">
         <Suspense fallback={<Loading />}>
           <div className="parent-container" id="container">
             <div
               className="common-padding"
               style={{ "--category-color": post.category.color }}
             >
-              <header className="entry-header">
+              <header className="entry-header ">
                 <h2 className="post-title-single">{post.post_title}</h2>
                 <p className="short-description open-sans">
                   {post.post_subtitle}
