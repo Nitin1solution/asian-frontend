@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
   const data = await getData(slug);
   const post = data.post || [];
   const postDescription = post.meta_description || post.post_subtitle;
-  const postImage = post.post_fr_img ; // Fallback image if none is available
+  const postImage = post.post_fr_img ; 
   const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${slug}`;
   const keywords = post.keywords ; 
  
@@ -54,9 +54,6 @@ async function page({ params }) {
   const slug = params.slug;
 
 
-
-
-
   return (
     <>
     
@@ -71,5 +68,5 @@ async function page({ params }) {
 }
 
 export default dynamic(() => Promise.resolve(page), {
-  ssr: false,
+  ssr: true,
 });
