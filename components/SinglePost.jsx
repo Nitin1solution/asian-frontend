@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import "../public/css/single.css";
@@ -12,28 +11,33 @@ import Loading from "../app/loading.js";
 // Main PostPage component
 // Define the stripHtmlAndTruncate function outside the useEffect
 function stripHtmlAndTruncate(htmlContent, maxLength = 160) {
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = htmlContent;
-  const textContent = tempDiv.textContent || tempDiv.innerText || "";
-  return textContent.length > maxLength
-    ? textContent.slice(0, maxLength) + "..."
-    : textContent;
+  if (typeof window !== 'undefined') {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlContent;
+    const textContent = tempDiv.textContent || tempDiv.innerText || "";
+    return textContent.length > maxLength
+      ? textContent.slice(0, maxLength) + "..."
+      : textContent;
+  }
+  return "";
 }
+
 const SinglePost = ({ post_slug }) => {
   const slug = post_slug;
   const [post, setPost] = useState(null);
-
   const [language, setLanguage] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
-  // const [tags,setTags]=useState([]);
   const [currentUrl, setCurrentUrl] = useState("");
+  const [keywords, setKeywords] = useState([]);
+
   const handleToggle = () => {
     setIsVisible(!isVisible);
   };
 
   useEffect(() => {
-    // Client side par current URL set karna
-    setCurrentUrl(window.location.href);
+    if (typeof window !== 'undefined') {
+      setCurrentUrl(window.location.href);
+    }
   }, []);
 
   useEffect(() => {
@@ -42,9 +46,7 @@ const SinglePost = ({ post_slug }) => {
         const res = await fetch(`https://admin.asiandispatch.net/api/${slug}`);
         const data = await res.json();
         setPost(data.post);
-        setKeywords(data.meta_keywords);
-        setLanguage(data.languages || []);
-        // setTags(JSON.parse(data.tags));
+        setKeywords(data.keywords);
       } catch (error) {
         console.error("Error fetching post:", error);
       }
@@ -54,6 +56,8 @@ const SinglePost = ({ post_slug }) => {
   }, [slug]);
 
   useEffect(() => {
+    if (typeof window === 'undefined' || !post) return;
+
     // Clean up empty paragraphs and headings
     document
       .querySelectorAll(
@@ -76,7 +80,7 @@ const SinglePost = ({ post_slug }) => {
 
         const $this = this;
         const $icon = $this.querySelector(".toggle-icon");
-        const $answer = $this.nextElementSibling; // Assuming .inner is the next sibling
+        const $answer = $this.nextElementSibling;
 
         if ($answer.classList.contains("show")) {
           $answer.style.display = "none";
@@ -123,6 +127,7 @@ const SinglePost = ({ post_slug }) => {
     links.forEach((link) => {
       link.setAttribute("target", "_blank");
     });
+
     const postContent = document.querySelector(".single-new-post-content");
 
     if (postContent) {
@@ -142,23 +147,22 @@ const SinglePost = ({ post_slug }) => {
         oldScript.parentNode.replaceChild(newScript, oldScript);
       });
     }
-    if (post) {
-      if (post.script_status === "yes") {
-        // Set padding-top of .pt50 to 0px
-        const pt50Element = document.querySelector(".pt50");
-        if (pt50Element) {
-          pt50Element.style.paddingTop = "0px";
-        }
 
-        // Set display to none for .entry_header, .tags, and .disclaimer
-        const entryHeader = document.querySelector(".entry-header");
-        const tags = document.querySelector(".tags");
-        const disclaimer = document.querySelector(".disclaimer");
-
-        if (entryHeader) entryHeader.style.display = "none";
-        if (tags) tags.style.display = "none";
-        if (disclaimer) disclaimer.style.display = "none";
+    if (post.script_status === "yes") {
+      // Set padding-top of .pt50 to 0px
+      const pt50Element = document.querySelector(".pt50");
+      if (pt50Element) {
+        pt50Element.style.paddingTop = "0px";
       }
+
+      // Set display to none for .entry_header, .tags, and .disclaimer
+      const entryHeader = document.querySelector(".entry-header");
+      const tags = document.querySelector(".tags");
+      const disclaimer = document.querySelector(".disclaimer");
+
+      if (entryHeader) entryHeader.style.display = "none";
+      if (tags) tags.style.display = "none";
+      if (disclaimer) disclaimer.style.display = "none";
     }
   }, [post]);
 
@@ -195,7 +199,7 @@ const SinglePost = ({ post_slug }) => {
                       )}
                       {post.post_brand_image && (
                         <li className="h0">
-                          <div class="image-paragraph">
+                          <div className="image-paragraph">
                             <img
                               src={post.post_brand_image}
                               className="brand_image"
@@ -292,17 +296,15 @@ const SinglePost = ({ post_slug }) => {
                           aria-hidden="true"
                         ></i>
                       </div>
-                      {isVisible && language.length > 1 && (
+                      {isVisible && (
                         <ul>
-                          {language.map((lang) =>
+                          {post.languages.map((lang) =>
                             lang.language !== post.language ? (
-                              <Link
-                                key={lang.language}
-                                href={`/${lang.post_slug}`}
-                                passHref
-                              >
-                                <li>{lang.language}</li>
-                              </Link>
+                              <li key={lang.language}>
+                                <Link href={`/${lang.post_slug}`}>
+                                  {lang.language}
+                                </Link>
+                              </li>
                             ) : null
                           )}
                         </ul>
@@ -357,7 +359,7 @@ const SinglePost = ({ post_slug }) => {
                 />
               </svg>
 
-              <div class="disclaimer-container">
+              <div className="disclaimer-container">
                 <p
                   className="single-post-content"
                   style={{ "--category-color": post.category.color }}
