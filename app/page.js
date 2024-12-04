@@ -25,7 +25,7 @@ import Loading from "./loading";
                     <div className=""> <img src="/images/about/Ad_.gif" alt="about us" /></div>
                 </div>
                 <div className="col-lg-6 col-md-6 col-sm-12">
-                    <div className="section-heading mb-30 mt-30 ">
+                    <div className="section-heading mb-30 mt-30 m0-tab ">
                         
                         <h2>
                             <a href="/who-we-are" className="ml-20"> ABOUT US</a>

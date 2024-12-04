@@ -22,7 +22,7 @@ function stripHtmlAndTruncate(htmlContent, maxLength = 160) {
 const SinglePost = ({ post_slug }) => {
   const slug = post_slug;
   const [post, setPost] = useState(null);
-  const [keywords, setKeywords] = useState("");
+
   const [language, setLanguage] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   // const [tags,setTags]=useState([]);

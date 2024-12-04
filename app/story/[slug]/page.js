@@ -1,6 +1,6 @@
 
 import { Suspense } from "react";
-import Loading from "../loading";
+import Loading from "../../loading";
 
 import dynamic from "next/dynamic";
 import SinglePost from "@/components/SinglePost";
@@ -28,22 +28,14 @@ export async function generateMetadata({ params }) {
   const data = await getData(slug);
   const post = data.post || [];
   const postDescription = post.meta_description || post.post_subtitle;
-  const postImage = post.post_fr_img ; 
+  const postImage = post.post_fr_img ; // Fallback image if none is available
   const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${slug}`;
-  const keywords = post.meta_keywords; 
-
-
-  let keywordArray = [];
-  try {
-    keywordArray = JSON.parse(keywords);
-
-  } catch (e) {
-    console.error("Error parsing keywords:", e);
-  }
+  const keywords = post.keywords ; 
+ 
   return {
     title: post.title||post.meta_title,
     description: postDescription,
-    keywords: keywordArray,
+    keywords: keywords,
     openGraph: {
       images: [postImage],
       url: postUrl,
@@ -56,10 +48,16 @@ export async function generateMetadata({ params }) {
   }
 }
 
-
+let isVisible = false;
 
 async function page({ params }) {
   const slug = params.slug;
+  // console.log(slug);
+  const data = await getData(slug);
+  const post = data.post || [];
+  const categoryColor = data?.post?.category?.color;
+  const currentUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${slug}`;
+  const language = data.language;
 
 
   return (
@@ -76,5 +74,5 @@ async function page({ params }) {
 }
 
 export default dynamic(() => Promise.resolve(page), {
-  ssr: true,
+  ssr: false,
 });

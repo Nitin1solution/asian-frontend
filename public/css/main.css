@@ -287,9 +287,9 @@ button {
     .sm-padding {
         padding: 15px;
     }
-    p br {
+    /* p br {
         display: none;
-    }
+    } */
 }
 
 .padding-15 {

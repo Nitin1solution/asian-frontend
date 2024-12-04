@@ -1,80 +1,103 @@
-@media (min-width:500px) and  (max-width:1080px){
+@media (min-width:500px) and (max-width:1080px) {
     .image-parent {
         display: flex !important;
         flex-direction: column;
         justify-content: center;
         gap: 20px;
     }
-    .p50-t{
-       padding: 50px;
+
+    .p50-t {
+        padding: 50px;
     }
+
     .post-layout-item .post-content {
-       
+
         height: 64%;
         max-height: max-content;
     }
+
     .inner-box {
         margin-top: 24%;
-       
+
     }
+
     .inner-box h3 {
         min-height: 60px;
         /* height: max-content; */
 
-       
+
+    }
+    .inner-box button {
+      
+        font-size: 10px;
+        
     }
     .about-p {
         font-size: 19px;
         line-height: 28px;
-      
+
     }
-    .m0-t{
+
+    .m0-t {
         margin: 0px !important;
     }
-    .about-image img{
+
+    .about-image img {
         height: 250px;
     }
+
     .mobile-menu-action {
-   
+
         width: 50px;
-       
+
     }
- 
+
 }
 
-@media (max-width: 480px){
+@media (max-width: 480px) {
     .post-layout-item .post-content h3 {
         font-size: 22px;
         line-height: 30px;
         margin-bottom: 30px;
     }
-    .box1, .box2, .box3, .box4 {
+
+    .box1,
+    .box2,
+    .box3,
+    .box4 {
         height: 400px;
-       
+
     }
-    .inner-box{
+
+    .inner-box {
         margin-top: 30%;
     }
+
     .inner-box h3 {
         height: max-content;
-       
+
     }
+
     .ml-20 {
         margin-left: 0px;
     }
+
     .about-p {
         font-size: 18px;
         line-height: 29px;
-    
+
     }
-    .mb-30{
+
+    .mb-30 {
         margin-bottom: 0px;
     }
 }
-@media (min-width:1081px) and (max-width:1199px){
+
+@media (min-width:1081px) and (max-width:1199px) {
     p br {
         display: block;
     }
+
     .third-section {
         position: relative;
         display: grid;
@@ -83,86 +106,106 @@
         filter: brightness(0.8);
         overflow: hidden;
     }
+
     .image-parent {
         display: flex !important;
         flex-direction: column;
         justify-content: center;
         gap: 20px;
     }
+
     .bannergrid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
         margin: 20px 0px;
     }
-    .maindiv h1, .maindiv p {
+
+    .maindiv h1,
+    .maindiv p {
         color: white;
         width: 70%;
     }
+
     h1 {
         font-size: 36px;
-      
+
         line-height: 44px;
-        
+
     }
+
     .maindiv {
         padding-top: 12%;
         /* padding-bottom: 5%; */
         color: white;
     }
+
     .grid-item h6 {
         font-size: 16px;
         height: 85px;
-      
+
     }
-    
+
     .post-layout-item .post-content {
-       
-        height: 66%!important;
-    
+
+        height: 66% !important;
+
     }
+
     .text-hover-category {
         font-size: 20px;
-        
+
     }
+
     .inner-box h3 {
         height: 167px;
-      
+
     }
+
     .about-p {
         font-size: 18px;
         line-height: 30px;
         /* font-weight: 600; */
     }
+
     .mb-30 {
         margin-bottom: 0px;
     }
+
     .inner-box h3 {
         height: 165px;
         font-size: 24px;
         line-height: 32px;
         text-align: center;
     }
+
     .horizontal-card {
         background-color: #ffffff;
-       
+
     }
+
     .mission-heading {
         font-size: 48px !important;
         line-height: 66px;
         font-weight: 400;
     }
+
     .article h2 {
         font-size: 20px;
         line-height: 24px;
         padding-top: 20px;
     }
+
     .inner-box {
         margin-top: 20%;
-       
+
     }
-    .box1, .box2, .box3, .box4 {
+
+    .box1,
+    .box2,
+    .box3,
+    .box4 {
         height: 400px;
-        
+
     }
 }

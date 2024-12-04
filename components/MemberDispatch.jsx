@@ -33,7 +33,7 @@ export default async function MemberDispatch() {
     return (
         <>
             <div class="post-layout bg-light-red padding-bottom">
-                <div class="section-heading text-center p50 ptb-50">
+                <div class="section-heading text-center p50 ptb-50 ptb50-tab">
                     <h2>MEMBERS' DISPATCH</h2>
                 </div>
                 <div class="container ">
