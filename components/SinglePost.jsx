@@ -289,26 +289,33 @@ const SinglePost = ({ post_slug }) => {
                   </div>
                   <div className="d-flex">
                     <div id="language" className="language tag-category-single">
-                      <div onClick={handleToggle} style={{ cursor: "pointer" }}>
-                        {post.language}&nbsp;
-                        <i
-                          className="fa fa-chevron-circle-down"
-                          aria-hidden="true"
-                        ></i>
+                      <div>
+                        {post.language}
+                        {post.languages && post.languages.length > 1 && (
+                          <>
+                            <span onClick={handleToggle} style={{ cursor: "pointer" }}>
+                              &nbsp;
+                              <i
+                                className="fa fa-chevron-circle-down"
+                                aria-hidden="true"
+                              ></i>
+                            </span>
+                            {isVisible && (
+                              <ul>
+                                {post.languages.map((lang) =>
+                                  lang.language !== post.language ? (
+                                    <li key={lang.language}>
+                                      <Link href={`/${lang.post_slug}`}>
+                                        {lang.language}
+                                      </Link>
+                                    </li>
+                                  ) : null
+                                )}
+                              </ul>
+                            )}
+                          </>
+                        )}
                       </div>
-                      {isVisible && (
-                        <ul>
-                          {post.languages.map((lang) =>
-                            lang.language !== post.language ? (
-                              <li key={lang.language}>
-                                <Link href={`/${lang.post_slug}`}>
-                                  {lang.language}
-                                </Link>
-                              </li>
-                            ) : null
-                          )}
-                        </ul>
-                      )}
                     </div>
                   </div>
                 </div>
