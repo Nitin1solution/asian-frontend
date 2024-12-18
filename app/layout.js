@@ -52,16 +52,16 @@ export default function RootLayout({ children }) {
 
 
 
-        <script src="/js/jquary-3.6.0.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/popper.min.js"></script>
-        <script src="/js/venobox.min.js"></script>
-        <script src="/js/swiper.min.js"></script>
-        <script src="/js/smooth-scroll.js"></script>
-        <script src="/js/mailchimp.js"></script>
-        <script src="/js/main.js"></script>
-        <script src="/js/most-popular.js"></script>
-        <script src="/js/myjs.js"></script>
+        <script src="/js/jquary-3.6.0.min.js" defer></script>
+        <script src="/js/bootstrap.min.js" defer></script>
+        <script src="/js/popper.min.js" defer></script>
+        <script src="/js/venobox.min.js" defer></script>
+        <script src="/js/swiper.min.js" defer></script>
+        <script src="/js/smooth-scroll.js" defer></script>
+        <script src="/js/mailchimp.js" defer></script>
+        <script src="/js/main.js" defer></script>
+        <script src="/js/most-popular.js" defer></script>
+        <script src="/js/myjs.js" defer></script>
       </body>
     </html>
   );

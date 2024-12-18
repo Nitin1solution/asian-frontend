@@ -40,6 +40,7 @@ const SinglePost = ({ post_slug }) => {
     }
   }, []);
 
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -57,7 +58,10 @@ const SinglePost = ({ post_slug }) => {
 
   useEffect(() => {
     if (typeof window === 'undefined' || !post) return;
-
+    // Apply lazy loading to all images
+    document.querySelectorAll("img").forEach((img) => {
+      img.setAttribute("loading", "lazy");
+    });
     // Clean up empty paragraphs and headings
     document.querySelectorAll("img").forEach((img) => {
       img.setAttribute("loading", "lazy");
