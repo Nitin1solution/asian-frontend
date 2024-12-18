@@ -59,7 +59,10 @@ const SinglePost = ({ post_slug }) => {
     if (typeof window === 'undefined' || !post) return;
 
     // Clean up empty paragraphs and headings
-    document
+    document.querySelectorAll("img").forEach((img) => {
+      img.setAttribute("loading", "lazy");
+    });
+      document
       .querySelectorAll(
         "hr + p, p + hr, hr + h1, h1 + hr, hr + h2, h2 + hr, hr + h3, h3 + hr, hr + h4, h4 + hr, hr + h5, h5 + hr, hr + h6, h6 + hr"
       )
@@ -71,7 +74,6 @@ const SinglePost = ({ post_slug }) => {
           pTag.remove();
         }
       });
-
     // Toggle functionality for accordion
     const toggleButtons = document.querySelectorAll(".toggle");
     toggleButtons.forEach((button) => {
@@ -105,6 +107,7 @@ const SinglePost = ({ post_slug }) => {
     });
 
     // Initialize Swiper
+ 
     const swiper = new Swiper(".swiper-container", {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -121,7 +124,9 @@ const SinglePost = ({ post_slug }) => {
         delay: 5000,
         disableOnInteraction: false,
       },
+      lazy: true, // Lazy loading for images in the swiper
     });
+    
 
     const links = document.querySelectorAll(".single-new-post-content a");
     links.forEach((link) => {
@@ -146,6 +151,7 @@ const SinglePost = ({ post_slug }) => {
         // Replace old script with the new one to ensure it runs
         oldScript.parentNode.replaceChild(newScript, oldScript);
       });
+      
     }
 
     if (post.script_status === "yes") {

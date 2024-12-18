@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import React from "react";
 
 
 import "../public/css/bootstrap.min.css";
@@ -19,9 +20,9 @@ import Loading from "./loading";
 
 
 import Header from "@/components/Header";
-import Link from "next/link";
-import Footer from "@/components/Footer";
 
+// Lazy-load the Footer component
+const LazyFooter = React.lazy(() => import("@/components/Footer"));
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -45,8 +46,9 @@ export default function RootLayout({ children }) {
         <Suspense fallback={<Loading/>}>
         {children}
         </Suspense>
-        <Footer />
-
+        <Suspense fallback={<div>Loading Footer...</div>}>
+        <LazyFooter />
+      </Suspense>
 
 
 
