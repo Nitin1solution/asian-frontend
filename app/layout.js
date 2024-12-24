@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import React from "react";
 
 
 import "../public/css/bootstrap.min.css";
@@ -16,13 +15,13 @@ import "../public/css/tablet.css";
 import "../public/css/landscapeMobile.css";
 import { Suspense } from 'react';
 import Loading from "./loading";
-// import Script from "next/script";
+
 
 
 import Header from "@/components/Header";
+import Link from "next/link";
+import Footer from "@/components/Footer";
 
-// Lazy-load the Footer component
-const LazyFooter = React.lazy(() => import("@/components/Footer"));
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -38,48 +37,29 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"></link>
-        
      
       </head>
 
       <body className={inter.className}>
-         {/* Google Analytics Scripts */}
-         {/* <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-6CLDQEJTCG"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-6CLDQEJTCG');
-            `,
-          }}
-        /> */}
         <Header />
         <Suspense fallback={<Loading/>}>
         {children}
         </Suspense>
-        <Suspense fallback={<div></div>}>
-        <LazyFooter />
-      </Suspense>
+        <Footer />
 
 
 
-        <script src="/js/jquary-3.6.0.min.js" defer></script>
-        <script src="/js/bootstrap.min.js" defer></script>
-        <script src="/js/popper.min.js" defer></script>
-        <script src="/js/venobox.min.js" defer></script>
-        <script src="/js/swiper.min.js" defer></script>
-        <script src="/js/smooth-scroll.js" defer></script>
-        <script src="/js/mailchimp.js" defer></script>
-        <script src="/js/main.js" defer></script>
-        <script src="/js/most-popular.js" defer></script>
-        <script src="/js/myjs.js" defer></script>
+
+        <script src="/js/jquary-3.6.0.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/venobox.min.js"></script>
+        <script src="/js/swiper.min.js"></script>
+        <script src="/js/smooth-scroll.js"></script>
+        <script src="/js/mailchimp.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="/js/most-popular.js"></script>
+        <script src="/js/myjs.js"></script>
       </body>
     </html>
   );
