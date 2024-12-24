@@ -16,7 +16,7 @@ import "../public/css/tablet.css";
 import "../public/css/landscapeMobile.css";
 import { Suspense } from 'react';
 import Loading from "./loading";
-
+import Script from "next/script";
 
 
 import Header from "@/components/Header";
@@ -38,10 +38,28 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"></link>
+        
      
       </head>
 
       <body className={inter.className}>
+         {/* Google Analytics Scripts */}
+         <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-6CLDQEJTCG"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-6CLDQEJTCG');
+            `,
+          }}
+        />
         <Header />
         <Suspense fallback={<Loading/>}>
         {children}

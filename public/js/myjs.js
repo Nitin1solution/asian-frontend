@@ -17,14 +17,21 @@ var swiper = new Swiper('.swiper-container', {
 });
 
 // Pause autoplay on hover
-document.querySelector('.swiper-container').addEventListener('mouseenter', function() {
-  swiper.autoplay.stop();
-});
+// document.querySelector('.swiper-container').addEventListener('mouseenter', function() {
+//   swiper.autoplay.stop();
+// });
 
 // Resume autoplay when hover ends
 document.querySelector('.swiper-container').addEventListener('mouseleave', function() {
   swiper.autoplay.start();
 });
+const swiperContainer = document.querySelector('.swiper-container');
+if (swiperContainer) {
+  swiperContainer.addEventListener('mouseenter', function() {
+    swiper.autoplay.stop();
+  });
+}
+
 
 document.querySelectorAll('hr + p, p + hr, hr + h1, h1 + hr, hr + h2, h2 + hr, hr + h3, h3 + hr, hr + h4, h4 + hr, hr + h5, h5 + hr, hr + h6, h6 + hr').forEach(pTag => {
   if (pTag.innerHTML.trim() === '&nbsp;' || pTag.innerHTML.trim() === '&ensp;') {
