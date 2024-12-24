@@ -16,7 +16,7 @@ import "../public/css/tablet.css";
 import "../public/css/landscapeMobile.css";
 import { Suspense } from 'react';
 import Loading from "./loading";
-import Script from "next/script";
+// import Script from "next/script";
 
 
 import Header from "@/components/Header";
@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
 
       <body className={inter.className}>
          {/* Google Analytics Scripts */}
-         <Script
+         {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-6CLDQEJTCG"
         />
@@ -59,7 +59,7 @@ export default function RootLayout({ children }) {
               gtag('config', 'G-6CLDQEJTCG');
             `,
           }}
-        />
+        /> */}
         <Header />
         <Suspense fallback={<Loading/>}>
         {children}
