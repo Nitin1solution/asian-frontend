@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
         <Suspense fallback={<Loading/>}>
         {children}
         </Suspense>
-        <Suspense fallback={<div>Loading Footer...</div>}>
+        <Suspense fallback={<div></div>}>
         <LazyFooter />
       </Suspense>
 

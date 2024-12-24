@@ -33,7 +33,7 @@ export  function generateMetadata() {
  async function Page() {
     const data = await getData();
     const posts = data.posts || []; // Ensure posts is always an array
-    // console.log(posts);
+    // console.log(data);
     return (
         <>
             {/* Page Header */}
