@@ -15,7 +15,7 @@ import "../public/css/tablet.css";
 import "../public/css/landscapeMobile.css";
 import { Suspense } from 'react';
 import Loading from "./loading";
-
+import Gtag from '../components/Gtag';
 
 
 import Header from "@/components/Header";
@@ -30,6 +30,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const GA_TRACKING_ID = 'G-6CLDQEJTCG'; 
   return (
     <html lang="en">
       <head>
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className={inter.className}>
+      <Gtag trackingId={GA_TRACKING_ID} />
         <Header />
         <Suspense fallback={<Loading/>}>
         {children}
