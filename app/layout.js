@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className={inter.className}>
-      <Gtag trackingId={GA_TRACKING_ID} />
+      {/* <Gtag trackingId={GA_TRACKING_ID} /> */}
         <Header />
         <Suspense fallback={<Loading/>}>
         {children}
