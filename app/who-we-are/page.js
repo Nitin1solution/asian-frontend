@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import '../../public/css/aboutUs/whoWeAre.css';
+import RemoveActiveClass from '@/components/RemoveActiveClass';
 
 export  function generateMetadata() {
 
@@ -12,6 +13,7 @@ export  function generateMetadata() {
  function page() {
   return (
    <>
+   <RemoveActiveClass/>
      <section className="container">
         <div className="heading-div section-heading">
 

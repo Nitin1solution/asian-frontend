@@ -4,6 +4,7 @@ import Loading from "../../loading";
 
 import dynamic from "next/dynamic";
 import SinglePost from "@/components/SinglePost";
+import RemoveActiveClass from "@/components/RemoveActiveClass";
 
 
 
@@ -62,7 +63,7 @@ async function page({ params }) {
 
   return (
     <>
-    
+    <RemoveActiveClass/>
       <section className="single-page no-sidebar padding-bottom pt50">
         <Suspense fallback={<Loading />}>
         <SinglePost post_slug={slug} />

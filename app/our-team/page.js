@@ -16,7 +16,13 @@ const OurTeam = () => {
     const editorialRef = useRef(null);
     const membersRef = useRef(null);
     const operationsRef = useRef(null);
-
+    useEffect(() => {
+        // Wait for the DOM to load
+        const searchBox = document.querySelector('.main-header-search');
+        if (searchBox && searchBox.classList.contains('active')) {
+          searchBox.classList.remove('active');
+        }
+      }, []);
     useEffect(() => {
         document.title = 'Our Team'; // Set the document title dynamically
 

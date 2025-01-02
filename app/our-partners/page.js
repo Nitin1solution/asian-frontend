@@ -25,7 +25,13 @@ async function getData() {
 
 function PartnersSection({ data }) {
 
-
+  useEffect(() => {
+    // Wait for the DOM to load
+    const searchBox = document.querySelector('.main-header-search');
+    if (searchBox && searchBox.classList.contains('active')) {
+      searchBox.classList.remove('active');
+    }
+  }, []);
   useEffect(() => {
    
       document.title =  "Our Partners";

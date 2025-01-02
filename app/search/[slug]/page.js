@@ -1,5 +1,6 @@
 import MainCard from "@/components/MainCard";
 import "../../../public/css/search.css";
+import RemoveActiveClass from "@/components/RemoveActiveClass";
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -51,6 +52,7 @@ export default async function Page({ params }) {
 
     return (
         <>
+        <RemoveActiveClass/>
             <section className="section-search">
                 <div className="container">
                     <h2 className="search-heading">

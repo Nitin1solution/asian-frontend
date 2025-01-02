@@ -20,6 +20,13 @@ const page = () => {
     setIsVisible(!isVisible);
   };
   useEffect(() => {
+    // Wait for the DOM to load
+    const searchBox = document.querySelector('.main-header-search');
+    if (searchBox && searchBox.classList.contains('active')) {
+      searchBox.classList.remove('active');
+    }
+  }, []);
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetch(`https://admin.asiandispatch.net/api/press/${id}/${slug}`);

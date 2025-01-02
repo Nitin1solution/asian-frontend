@@ -15,7 +15,13 @@ const Page = () => {
     const [post, setPost] = useState(null);
     const [author, setAuthor] = useState(null);
     const [categories, setCategories] = useState(null);
-
+    useEffect(() => {
+        // Wait for the DOM to load
+        const searchBox = document.querySelector('.main-header-search');
+        if (searchBox && searchBox.classList.contains('active')) {
+          searchBox.classList.remove('active');
+        }
+      }, []);
     useEffect(() => {
         const fetchData = async () => {
             try {

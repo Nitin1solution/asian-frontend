@@ -1,6 +1,6 @@
 
 import Featured from "@/components/Featured";
-import styles from "./page.module.css";
+
 import dynamic from "next/dynamic";
 
 import MemberDispatch from "@/components/MemberDispatch";
@@ -9,11 +9,13 @@ import Image from "next/image";
 import Partners from "@/components/Partners";
 import { Suspense } from 'react';
 import Loading from "./loading";
+import RemoveActiveClass from "@/components/RemoveActiveClass";
 
  function Home() {
   return (
     <>
   <Suspense fallback={<Loading/>}>
+  <RemoveActiveClass/>
    <Featured/>
    </Suspense>
    <MemberDispatch/>

@@ -35,6 +35,13 @@ const SinglePost = ({ post_slug }) => {
   };
 
   useEffect(() => {
+    // Wait for the DOM to load
+    const searchBox = document.querySelector('.main-header-search');
+    if (searchBox && searchBox.classList.contains('active')) {
+      searchBox.classList.remove('active');
+    }
+  }, []);
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       setCurrentUrl(window.location.href);
     }

@@ -22,6 +22,7 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
 
       <body className={inter.className}>
       {/* <Gtag trackingId={GA_TRACKING_ID} /> */}
+
         <Header />
         <Suspense fallback={<Loading/>}>
         {children}

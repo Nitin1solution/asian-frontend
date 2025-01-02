@@ -8,6 +8,13 @@ import Icon from '../../public/images/contact/as-icon-email.png';
 
 export default function ContactUs() {
   useEffect(() => {
+    // Wait for the DOM to load
+    const searchBox = document.querySelector('.main-header-search');
+    if (searchBox && searchBox.classList.contains('active')) {
+      searchBox.classList.remove('active');
+    }
+  }, []);
+  useEffect(() => {
     document.title = 'Contact-Us'; // Set the document title dynamically
 }, []);
   useEffect(() => {

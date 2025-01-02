@@ -4,6 +4,7 @@ import Link from 'next/link';
 import '../../public/css/category.css'
 import Styles from './original.module.css'
 import dynamic from 'next/dynamic';
+import RemoveActiveClass from '@/components/RemoveActiveClass';
 
 async function getData() {
     try {
@@ -36,6 +37,7 @@ export  function generateMetadata() {
     return (
         <>
             {/* Page Header */}
+            <RemoveActiveClass/>
             <section className="page-header">
                 <div className="container">
                     <div className="page-content-wrap main-header-category"
