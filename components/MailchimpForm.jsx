@@ -53,7 +53,7 @@ const MailchimpForm = () => {
             target="_blank"
             noValidate
           >
-             <h2 className='my-2 text-center'>Subscribe to our Newsletter</h2>
+             <h2 className=' text-center' style={{margin:'35px'}}>Subscribe to our Newsletter</h2>
               <div className="indicates-required my-4 text-center">
                 <span className="asterisk">*</span> indicates required
               </div>
