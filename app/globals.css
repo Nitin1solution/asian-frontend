@@ -227,3 +227,16 @@ a:hover {
         text-align: center;
     }
 }
+
+
+.mc_embed_signup_form {
+    background: #fff;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+    padding: 25px 20px;
+    margin-bottom: 25px;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+}
