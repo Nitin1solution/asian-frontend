@@ -69,6 +69,7 @@ export default function Page() {
                       fontSize: "20px", // Updated font size for title
                       fontWeight: "bold",
                       marginTop: "10px",
+                      lineHeight:'28px',
                    
                     }}
                   >
