@@ -42,7 +42,7 @@ const MailchimpForm = () => {
         </style>
       </Head>
 
-      <div id="mc_embed_shell">
+      <div id="mc_embed_shell" style={{marginBottom:'35px'}}>
         <div id="mc_embed_signup"  >
           <form
             action="https://dataleads.us1.list-manage.com/subscribe/post?u=2ee8fda63c565a2613ae12b21&amp;id=1381243b44&amp;f_id=00e7dee0f0"
@@ -59,10 +59,7 @@ const MailchimpForm = () => {
               </div>
             <div id="mc_embed_signup_scroll " className='mc_embed_signup_form' >
              
-              <div className="mc-field-group">
-                <label htmlFor="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
-                <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" required />
-              </div>
+           
               <div className="mc-field-group">
                 <label htmlFor="mce-FNAME">First Name <span className="asterisk">*</span></label>
                 <input type="text" name="FNAME" className="required text" id="mce-FNAME" required />
@@ -70,6 +67,10 @@ const MailchimpForm = () => {
               <div className="mc-field-group">
                 <label htmlFor="mce-LNAME">Last Name <span className="asterisk">*</span></label>
                 <input type="text" name="LNAME" className="required text" id="mce-LNAME" required />
+              </div>
+              <div className="mc-field-group">
+                <label htmlFor="mce-EMAIL">Email Address <span className="asterisk">*</span></label>
+                <input type="email" name="EMAIL" className="required email" id="mce-EMAIL" required />
               </div>
               <div className="mc-field-group">
                 <label htmlFor="mce-MMERGE3">Institute/Organization Name <span className="asterisk">*</span></label>

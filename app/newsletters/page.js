@@ -11,8 +11,8 @@ export default function Page() {
       <div
         className="container"
         style={{
-          marginTop: '20px',
-          marginBottom: '20px',
+          marginTop: '50px',
+          marginBottom: '50px',
           padding: '0 15px',
         }}
       >
