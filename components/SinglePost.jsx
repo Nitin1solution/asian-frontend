@@ -11,7 +11,7 @@ import Loading from "../app/loading.js";
 // Main PostPage component
 // Define the stripHtmlAndTruncate function outside the useEffect
 function stripHtmlAndTruncate(htmlContent, maxLength = 160) {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = htmlContent;
     const textContent = tempDiv.textContent || tempDiv.innerText || "";
@@ -33,21 +33,19 @@ const SinglePost = ({ post_slug }) => {
   const handleToggle = () => {
     setIsVisible(!isVisible);
   };
-
   useEffect(() => {
     // Wait for the DOM to load
-    const searchBox = document.querySelector('.main-header-search');
-    if (searchBox && searchBox.classList.contains('active')) {
-      searchBox.classList.remove('active');
+    const searchBox = document.querySelector(".main-header-search");
+    if (searchBox && searchBox.classList.contains("active")) {
+      searchBox.classList.remove("active");
     }
   }, []);
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       setCurrentUrl(window.location.href);
     }
   }, []);
 
-  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -64,15 +62,9 @@ const SinglePost = ({ post_slug }) => {
   }, [slug]);
 
   useEffect(() => {
-    if (typeof window === 'undefined' || !post) return;
-    // Apply lazy loading to all images
-    document.querySelectorAll("img").forEach((img) => {
-      img.setAttribute("loading", "lazy");
-    });
+    if (typeof window === "undefined" || !post) return;
+
     // Clean up empty paragraphs and headings
-    document.querySelectorAll("img").forEach((img) => {
-      img.setAttribute("loading", "lazy");
-    });
     document
       .querySelectorAll(
         "hr + p, p + hr, hr + h1, h1 + hr, hr + h2, h2 + hr, hr + h3, h3 + hr, hr + h4, h4 + hr, hr + h5, h5 + hr, hr + h6, h6 + hr"
@@ -85,6 +77,7 @@ const SinglePost = ({ post_slug }) => {
           pTag.remove();
         }
       });
+
     // Toggle functionality for accordion
     const toggleButtons = document.querySelectorAll(".toggle");
     toggleButtons.forEach((button) => {
@@ -118,7 +111,6 @@ const SinglePost = ({ post_slug }) => {
     });
 
     // Initialize Swiper
- 
     const swiper = new Swiper(".swiper-container", {
       slidesPerView: 1,
       spaceBetween: 10,
@@ -135,11 +127,11 @@ const SinglePost = ({ post_slug }) => {
         delay: 5000,
         disableOnInteraction: false,
       },
-      lazy: true, // Lazy loading for images in the swiper
     });
-    
 
-    const links = document.querySelectorAll(".single-new-post-content a");
+    const links = document.querySelectorAll(
+      ".disclaimer-container a, .single-new-post-content a"
+    );
     links.forEach((link) => {
       link.setAttribute("target", "_blank");
     });
@@ -162,7 +154,6 @@ const SinglePost = ({ post_slug }) => {
         // Replace old script with the new one to ensure it runs
         oldScript.parentNode.replaceChild(newScript, oldScript);
       });
-      
     }
 
     if (post.script_status === "yes") {
@@ -178,8 +169,8 @@ const SinglePost = ({ post_slug }) => {
       const disclaimer = document.querySelector(".disclaimer");
 
       if (entryHeader) entryHeader.style.display = "none";
-      if (tags) tags.style.display = "none";
-      if (disclaimer) disclaimer.style.display = "none";
+      // if (tags) tags.style.display = "none";
+      // if (disclaimer) disclaimer.style.display = "none";
     }
   }, [post]);
 
@@ -228,7 +219,7 @@ const SinglePost = ({ post_slug }) => {
                     </ul>
                   </li>
                   <li className="social-share">
-                    <span className="open-sans">Share :</span>
+                    <span className="helvetica">Share :</span>
                     {currentUrl && (
                       <>
                         <Link
@@ -251,7 +242,7 @@ const SinglePost = ({ post_slug }) => {
                         >
                           <i className="bi bi-twitter-x"></i>
                         </Link>
-                        
+
                         <Link
                           href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                             currentUrl
@@ -262,7 +253,7 @@ const SinglePost = ({ post_slug }) => {
                         >
                           <i className="fa fa-facebook-f"></i>
                         </Link>
-                       
+
                         <Link
                           href={`https://wa.me/?text=${encodeURIComponent(
                             currentUrl
@@ -287,30 +278,38 @@ const SinglePost = ({ post_slug }) => {
                           .replace(/\s+/g, "-")}`}
                       >
                         {user.name}
-                        {index < post.users.length - 1 && ","}
+                        {index < post.users.length - 1 && ", "}
                       </Link>
                     ))}
                     {post.user_id_name && (
-                      <Link href="#" style={{ textTransform: "capitalize" }}>
+                      <span
+                        className="additional_author"
+                        style={{ textTransform: "capitalize" }}
+                      >
                         , {post.user_id_name}
-                      </Link>
+                      </span>
                     )}
                     &nbsp;|&nbsp;
                     <span className="date-author">
-                      {new Date(post.created_at).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
+                      {new Date(post.created_at)
+                        .toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })
+                        .replace(/(\d+)\s([^\d]+)\s(\d+)/, "$1 $2, $3")}
                     </span>
                   </div>
                   <div className="d-flex">
                     <div id="language" className="language tag-category-single">
-                      <div>
+                      <div className="helvetica">
                         {post.language}
                         {post.languages && post.languages.length > 1 && (
                           <>
-                            <span onClick={handleToggle} style={{ cursor: "pointer" }}>
+                            <span
+                              onClick={handleToggle}
+                              style={{ cursor: "pointer" }}
+                            >
                               &nbsp;
                               <i
                                 className="fa fa-chevron-circle-down"

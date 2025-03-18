@@ -4,9 +4,14 @@ import RemoveActiveClass from '@/components/RemoveActiveClass';
 
 function formatDate(dateString) {
     const date = new Date(dateString);
-    const options = { day: '2-digit', month: 'long', year: 'numeric' };
-    return date.toLocaleDateString('en-GB', options);
-}
+    const options = { day: "2-digit", month: "long", year: "numeric" };
+    
+    // Format the date in "en-GB" locale
+    const formattedDate = date.toLocaleDateString("en-GB", options);
+    
+    // Add a comma after the month
+    return formattedDate.replace(/(\d+)\s([^\d]+)\s(\d+)/, "$1 $2, $3");
+  }
 
 export async function getData(slug) {
     try {

@@ -30,9 +30,9 @@ const PostPage = ({ params }) => {
   };
   useEffect(() => {
     // Wait for the DOM to load
-    const searchBox = document.querySelector('.main-header-search');
-    if (searchBox && searchBox.classList.contains('active')) {
-      searchBox.classList.remove('active');
+    const searchBox = document.querySelector(".main-header-search");
+    if (searchBox && searchBox.classList.contains("active")) {
+      searchBox.classList.remove("active");
     }
   }, []);
   useEffect(() => {
@@ -160,8 +160,8 @@ const PostPage = ({ params }) => {
         const disclaimer = document.querySelector(".disclaimer");
 
         if (entryHeader) entryHeader.style.display = "none";
-        if (tags) tags.style.display = "none";
-        if (disclaimer) disclaimer.style.display = "none";
+        // if (tags) tags.style.display = "none";
+        // if (disclaimer) disclaimer.style.display = "none";
       }
     }
   }, [post]);
@@ -171,9 +171,9 @@ const PostPage = ({ params }) => {
       if (document.title !== (post.meta_title || "Asian Dispatch")) {
         document.title = post.meta_title || "Asian Dispatch";
       }
-  
+
       const plainDescription = stripHtmlAndTruncate(post.meta_description);
-  
+
       // Set meta description
       let metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
@@ -186,43 +186,48 @@ const PostPage = ({ params }) => {
       }
 
       // Set meta keywords
-  
-        let metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (metaKeywords) {
-          metaKeywords.setAttribute("content", JSON.parse(post.meta_keywords));
-        } else {
-          const newMetaKeywords = document.createElement("meta");
-          newMetaKeywords.name = "keywords";
-          newMetaKeywords.content = JSON.parse(post.meta_keywords);
-          document.head.appendChild(newMetaKeywords);
-        }
-      
-  
+
+      let metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (metaKeywords) {
+        metaKeywords.setAttribute("content", JSON.parse(post.meta_keywords));
+      } else {
+        const newMetaKeywords = document.createElement("meta");
+        newMetaKeywords.name = "keywords";
+        newMetaKeywords.content = JSON.parse(post.meta_keywords);
+        document.head.appendChild(newMetaKeywords);
+      }
+
       // Prevent adding multiple OG tags
-      const existingOgTitle = document.querySelector('meta[property="og:title"]');
+      const existingOgTitle = document.querySelector(
+        'meta[property="og:title"]'
+      );
       if (!existingOgTitle) {
         const ogTitle = document.createElement("meta");
         ogTitle.setAttribute("property", "og:title");
         ogTitle.content = post.post_title;
         document.head.appendChild(ogTitle);
       }
-  
-      const existingOgDescription = document.querySelector('meta[property="og:description"]');
+
+      const existingOgDescription = document.querySelector(
+        'meta[property="og:description"]'
+      );
       if (!existingOgDescription) {
         const ogDescription = document.createElement("meta");
         ogDescription.setAttribute("property", "og:description");
         ogDescription.content = post.post_subtitle;
         document.head.appendChild(ogDescription);
       }
-  
-      const existingOgImage = document.querySelector('meta[property="og:image"]');
+
+      const existingOgImage = document.querySelector(
+        'meta[property="og:image"]'
+      );
       if (!existingOgImage) {
         const ogImage = document.createElement("meta");
         ogImage.setAttribute("property", "og:image");
         ogImage.content = post.post_fr_img;
         document.head.appendChild(ogImage);
       }
-  
+
       // Set canonical link
       if (post.canonical) {
         let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -243,8 +248,6 @@ const PostPage = ({ params }) => {
 
   return (
     <>
-   
-
       <section className="single-page no-sidebar padding-bottom pt50">
         <Suspense fallback={<Loading />}>
           <div className="parent-container" id="container">
@@ -252,7 +255,7 @@ const PostPage = ({ params }) => {
               className="common-padding"
               style={{ "--category-color": post.category.color }}
             >
-              <header className="entry-header">
+              <header className="entry-header ">
                 <h2 className="post-title-single">{post.post_title}</h2>
                 <p className="short-description open-sans">
                   {post.post_subtitle}
@@ -272,7 +275,7 @@ const PostPage = ({ params }) => {
                       )}
                       {post.post_brand_image && (
                         <li className="h0">
-                          <div class="image-paragraph">
+                          <div className="image-paragraph">
                             <img
                               src={post.post_brand_image}
                               className="brand_image"
@@ -284,7 +287,7 @@ const PostPage = ({ params }) => {
                     </ul>
                   </li>
                   <li className="social-share">
-                    <span className="open-sans">Share :</span>
+                    <span className="helvetica">Share :</span>
                     <Link
                       href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
                         window.location.href
@@ -328,8 +331,8 @@ const PostPage = ({ params }) => {
                   </li>
                 </ul>
                 <div className="top-author color-line-category">
-                  <div className="open-sans">
-                  {post.users.map((user, index) => (
+                  <div className="helvetica">
+                    {post.users.map((user, index) => (
                       <Link
                         key={user.id}
                         href={`/author/${user.id}/${user.name
@@ -337,47 +340,60 @@ const PostPage = ({ params }) => {
                           .replace(/\s+/g, "-")}`}
                       >
                         {user.name}
-                        {index < post.users.length - 1 && ","}
+                        {index < post.users.length - 1 && ", "}
                       </Link>
                     ))}
                     {post.user_id_name && (
-                      <Link href="#" style={{ textTransform: "capitalize" }}>
+                      <span
+                        className="additional_author"
+                        style={{ textTransform: "capitalize" }}
+                      >
                         , {post.user_id_name}
-                      </Link>
+                      </span>
                     )}
                     &nbsp;|&nbsp;
                     <span className="date-author">
-                      {new Date(post.created_at).toLocaleDateString("en-GB", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}
+                      {new Date(post.created_at)
+                        .toLocaleDateString("en-GB", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })
+                        .replace(/(\d+)\s([^\d]+)\s(\d+)/, "$1 $2, $3")}
                     </span>
                   </div>
                   <div className="d-flex">
                     <div id="language" className="language tag-category-single">
-                      <div onClick={handleToggle} style={{ cursor: "pointer" }}>
-                        {post.language}&nbsp;
-                        <i
-                          className="fa fa-chevron-circle-down"
-                          aria-hidden="true"
-                        ></i>
+                      <div className="helvetica">
+                        {post.language}
+                        {post.languages && post.languages.length > 1 && (
+                          <>
+                            <span
+                              onClick={handleToggle}
+                              style={{ cursor: "pointer" }}
+                            >
+                              &nbsp;
+                              <i
+                                className="fa fa-chevron-circle-down"
+                                aria-hidden="true"
+                              ></i>
+                            </span>
+                            {isVisible && (
+                              <ul>
+                                {post.languages.map((lang) =>
+                                  lang.language !== post.language ? (
+                                    <li key={lang.language}>
+                                      <Link href={`/${lang.post_slug}`}>
+                                        {lang.language}
+                                      </Link>
+                                    </li>
+                                  ) : null
+                                )}
+                              </ul>
+                            )}
+                          </>
+                        )}
                       </div>
-                      {isVisible && language.length > 1 && (
-                        <ul>
-                          {language.map((lang) =>
-                            lang.language !== post.language ? (
-                              <Link
-                                key={lang.language}
-                                href={`/${lang.post_slug}`}
-                                passHref
-                              >
-                                <li>{lang.language}</li>
-                              </Link>
-                            ) : null
-                          )}
-                        </ul>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -428,7 +444,7 @@ const PostPage = ({ params }) => {
                 />
               </svg>
 
-              <div class="disclaimer-container">
+              <div className="disclaimer-container">
                 <p
                   className="single-post-content"
                   style={{ "--category-color": post.category.color }}

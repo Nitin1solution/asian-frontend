@@ -62,7 +62,7 @@ export default async function MemberDispatch() {
                           
                             </Link>
                             <div className="post-content">
-                                <h3>
+                                <h3 className="member-dispatch-center-post">
                                     <Link href={`/${post_1.post.post_slug}`}  className={`text-hover-category prata fw-6 fs-20`} >{post_1.post.post_title}
                                     </Link>
                                     <ul className="post-meta">

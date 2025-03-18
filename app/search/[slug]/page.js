@@ -5,7 +5,12 @@ import RemoveActiveClass from "@/components/RemoveActiveClass";
 function formatDate(dateString) {
   const date = new Date(dateString);
   const options = { day: "2-digit", month: "long", year: "numeric" };
-  return date.toLocaleDateString("en-GB", options);
+  
+  // Format the date in "en-GB" locale
+  const formattedDate = date.toLocaleDateString("en-GB", options);
+  
+  // Add a comma after the month
+  return formattedDate.replace(/(\d+)\s([^\d]+)\s(\d+)/, "$1 $2, $3");
 }
 
 export async function getData(slug) {
@@ -33,7 +38,7 @@ export default async function Page({ params }) {
 
     // If slug is not defined, handle the case
     if (!slug) {
-        return <div>Invalid tag.</div>;
+        return <div>Invalid Search.</div>;
     }
 
     // Decode the slug to handle spaces properly
@@ -56,7 +61,7 @@ export default async function Page({ params }) {
             <section className="section-search">
                 <div className="container">
                     <h2 className="search-heading">
-                        Tag results for: {slug.charAt(0).toUpperCase() + slug.slice(1)}
+                        Search results for: {slug.charAt(0).toUpperCase() + slug.slice(1)}
                     </h2>
                     <h3>Total results: {count}</h3>
 

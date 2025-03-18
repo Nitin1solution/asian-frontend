@@ -65,7 +65,33 @@
 
         // Mobile Menu
         function mobileMenu() {
-            $("header.main-header").after('<div class="mobile-navigation-menu"><button id="mobile-menu-close"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor"><path d="M256-213.847 213.847-256l224-224-224-224L256-746.153l224 224 224-224L746.153-704l-224 224 224 224L704-213.847l-224-224-224 224Z"/></svg></button></div>');
+            $("header.main-header").after(`
+                <div class="mobile-navigation-menu">
+                    <button id="mobile-menu-close">
+                        <svg width="16px" height="16px" viewBox="0 0 15 15" version="1.1" id="cross" xmlns="http://www.w3.org/2000/svg">
+                            <path d="
+                                M2.64,1.27L7.5,6.13l4.84-4.84
+                                C12.5114,1.1076,12.7497,1.0029,13,1
+                                c0.5523,0,1,0.4477,1,1
+                                c0.0047,0.2478-0.093,0.4866-0.27,0.66
+                                L8.84,7.5l4.89,4.89
+                                c0.1648,0.1612,0.2615,0.3796,0.27,0.61
+                                c0,0.5523-0.4477,1-1,1
+                                c-0.2577,0.0107-0.508-0.0873-0.69-0.27
+                                L7.5,8.87l-4.85,4.85
+                                C2.4793,13.8963,2.2453,13.9971,2,14
+                                c-0.5523,0-1-0.4477-1-1
+                                c-0.0047-0.2478,0.093-0.4866,0.27-0.66
+                                L6.16,7.5L1.27,2.61
+                                C1.1052,2.4488,1.0085,2.2304,1,2
+                                c0-0.5523,0.4477-1,1-1
+                                C2.2404,1.0029,2.4701,1.0998,2.64,1.27z
+                            "/>
+                        </svg>
+                    </button>
+                </div>
+            `);
+            
             var menuWrapper = $("header.main-header .header-menu-wrap .nav-menu").clone();
             $('.mobile-navigation-menu #mobile-menu-close').after(menuWrapper);
 
@@ -399,15 +425,12 @@
     //    setPreference();
     //});
   
- 
-    
-
     document.querySelector('#search-menu').addEventListener('click', function() {
         const searchBox = document.querySelector('.main-header-search');
         searchBox.classList.toggle('active');
     });
     
+
   
-    
 
 })(jQuery);

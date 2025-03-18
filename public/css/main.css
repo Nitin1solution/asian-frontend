@@ -2068,8 +2068,8 @@ background-color: black !important;
     margin-top: -80px;
     position: relative;
     z-index: 1;
-    height: 61%;
-    max-height: max-content;
+    /* min-height: 61%; */
+    height: max-content;
 }
 
 .post-layout-item .post-content h3 {
@@ -3534,7 +3534,10 @@ blockquote p span:before {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     /* margin-top: 8px; */
-    margin: 8px;
+    /* margin: 8px; */
+    font-family: Helvetica, sans-serif;
+    font-style: italic;
+    margin: 0px 0px 5px 0px;
 }
 
 .sidebar-widget .author-content p {

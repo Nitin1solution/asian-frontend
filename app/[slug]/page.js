@@ -4,7 +4,7 @@ import Loading from "../loading";
 
 import dynamic from "next/dynamic";
 import SinglePost from "@/components/SinglePost";
-
+import { notFound } from 'next/navigation';
 
 
 async function getData(slug) {
@@ -20,13 +20,19 @@ async function getData(slug) {
     return res.json();
   } catch (error) {
     console.error(error);
-    return { posts: [] }; // Return an empty posts array on error
+
+    return { notFound: true };
   }
 }
 export async function generateMetadata({ params }) {
+  // const slug = params.id;
   const slug = params.slug;
   const data = await getData(slug);
   const post = data.post || [];
+  
+  if (data.notFound) {
+    return notFound();
+  }
   const postDescription = post.meta_description || post.post_subtitle;
   const postImage = post.post_fr_img ; 
   const postUrl = `${process.env.NEXT_PUBLIC_SITE_URL}${slug}`;

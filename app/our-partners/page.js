@@ -43,8 +43,8 @@ function PartnersSection({ data }) {
     <section className="container our-partner-container">
       <div className="member">
         <div className="left-member">
-          <div className="heading-div section-heading">
-            <h2 className="short-line short-line-left">
+          <div className="heading-div  section-heading">
+            <h2 className="short-line short-line-left ">
               Our Partners
             </h2>
           </div>
